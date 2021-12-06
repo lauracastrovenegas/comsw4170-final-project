@@ -6,16 +6,29 @@ import React from "react";
 import styled from "styled-components";
 
 const CardWrapper = styled.div`
-    display: flex;
-    background-color: ${(props) => props.theme.colors.blue};
+    border: 2px solid ${(props) => props.theme.colors.gray};
+    margin: 0.5rem;
+    
+    a {
+        text-decoration: none;
+        color: black;
+    }
 `;
 
-export const ListCard = ({id}) => {
+const Card = styled.div`
+
+`;
+
+export const ListCard = ({id, category, title, date_created}) => {
     return (
+        <CardWrapper>
         <a href={`/list/${id}`}>
-            <CardWrapper>
-                This is a list card
-            </CardWrapper>
+            <Card>
+                <div>{title}</div>
+                <div>{category}</div>
+                <div>{date_created}</div>
+            </Card>
         </a>
+        </CardWrapper>
     );
 }
