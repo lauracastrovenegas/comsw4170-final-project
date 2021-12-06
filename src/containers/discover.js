@@ -1,4 +1,5 @@
-/* This is the main Discover Page */
+/* This is the main Discover Page 
+- uses CategoryCarousel to display different categories */
 
 import React from 'react';
 import styled from 'styled-components';
