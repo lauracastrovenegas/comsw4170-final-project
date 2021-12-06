@@ -1,13 +1,11 @@
+/* This is the main My Lists Page */
+
 import React from 'react';
 import styled from 'styled-components';
 import { useState, useEffect } from 'react';
 import SearchBar from '../components/searchBar';
 
 const PageWrapper = styled.div`
-
-`;
-
-const SearchBox = styled.div`
 
 `;
 
@@ -20,7 +18,7 @@ const MyLists = () => {
 
   return (
     <PageWrapper>
-      <SearchBox><SearchBar barText={searchBarText} setBarText={updateSearch} placeholder="Lists, Categories ..."/></SearchBox>
+      <SearchBar barText={searchBarText} setBarText={updateSearch} placeholder="Lists, Categories ..."/>
     </PageWrapper>
   );
 }
