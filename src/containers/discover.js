@@ -9,10 +9,6 @@ const PageWrapper = styled.div`
 
 `;
 
-const SearchBox = styled.div`
-
-`;
-
 const DiscoverPage = () => {
   const [searchBarText, setSearchBarText] = useState('');
 
