@@ -5,12 +5,12 @@ const PageWrapper = styled.div`
 
 `;
 
-const Home = () => {
+const DiscoverPage = () => {
   return (
       <PageWrapper>
-          This is the Home Page
+          This is the Discover Page
       </PageWrapper>
   );
 }
 
-export default Home;
+export default DiscoverPage;
