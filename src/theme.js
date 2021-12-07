@@ -9,7 +9,7 @@ const theme = {
     gray: '#9A9A9A',
     lightGray: '#E7E7E7',
     checkboxGray: '#696969',
-    fullWhite: '#ffffff',
+    fullWhite: '#ffffff'
   },
 };
 

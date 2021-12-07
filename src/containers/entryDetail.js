@@ -8,7 +8,7 @@ import { myLists } from '../data/myLists';
 import { BackButton } from '../components/backBtn';
 
 const PageWrapper = styled.div`
-  padding: 1rem;
+  padding: 1rem 1rem 4.5rem 1rem;
 `;
 
 const Content = styled.div`

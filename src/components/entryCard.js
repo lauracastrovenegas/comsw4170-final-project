@@ -4,6 +4,7 @@
 
 import React from "react";
 import styled from "styled-components";
+import { ReactionIcon } from "./reactionIcon";
 
 const Card = styled.a`
     text-decoration: none;
@@ -12,10 +13,10 @@ const Card = styled.a`
 `;
 
 const CardWrapper = styled.div`
-    padding: 0.5rem;
-    width: 87vw;
+    padding: 1rem;
+    width: 80vw;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     margin: 0.5rem auto;
     background-color: ${(props) => props.theme.colors.fullWhite};
     border-radius: 7px;
@@ -23,12 +24,19 @@ const CardWrapper = styled.div`
     border: 0px;
 `;
 
-export const EntryCard = ({listid, id, title, location, rating, notes, date_created}) => {
+const Content = styled.div`
+    display: inline-block;
+`;
+
+export const EntryCard = ({listid, id, title, location, notes, date_created, reaction}) => {
     return (
         <Card href={`/list/${listid}/${id}`}>
             <CardWrapper>
-                <div>{title}</div>
-                <div>{rating}</div>
+                <ReactionIcon reaction={reaction}/>
+                <Content>
+                    <div>{title}</div>
+                    <div>{date_created}</div>
+                </Content>
             </CardWrapper>
         </Card>
     );

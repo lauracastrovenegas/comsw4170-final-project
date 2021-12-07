@@ -7,7 +7,7 @@ import { useState, useEffect } from 'react';
 import SearchBar from '../components/searchBar';
 
 const PageWrapper = styled.div`
-  padding: 0.5rem;
+  padding: 1rem 1rem 4.5rem 1rem;
 `;
 
 const DiscoverPage = () => {

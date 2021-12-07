@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import { useState, useEffect } from 'react';
 
 const PageWrapper = styled.div`
-
+  padding: 1rem 1rem 4.5rem 1rem;
 `;
 
 const EntryFormPage = ({

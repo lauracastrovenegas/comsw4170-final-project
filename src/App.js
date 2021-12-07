@@ -22,8 +22,8 @@ const App = () => {
             <Route path='/entry-form/' element={<EntryFormPage/>} />
             <Route path='/list-form/' element={<ListFormPage/>} />
         </Routes>
-        <NavBar/>
       </Router>
+      <NavBar/>
     </ThemeProvider>
   );
 }

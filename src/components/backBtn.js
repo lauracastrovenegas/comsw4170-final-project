@@ -6,6 +6,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons'
 
 const Wrapper = styled.a`
+    display: flex;
+    width: fit-content;
     padding: 1rem 0rem;
     text-decoration: none;
     color: black;
@@ -14,10 +16,10 @@ const Wrapper = styled.a`
         background-color: none;
     }
 `;
-const Icon = styled.a`
+const Icon = styled.div`
     padding: 0rem 0.5rem;
 `;
-const Text = styled.a`
+const Text = styled.div`
     margin: auto 0.2rem;
 `;
 

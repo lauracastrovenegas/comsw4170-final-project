@@ -14,7 +14,13 @@ const PageWrapper = styled.div`
 `;
 
 const EntryCards = styled.div`
-
+  padding-bottom: 3.5rem;
+  overflow: scroll;
+  max-height: 65vh;
+  ::-webkit-scrollbar {
+    width: 0;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just make scrollbar invisible */
+  }
 `;
 
 const CardWrapper = styled.div`
@@ -63,9 +69,9 @@ const ListPage = ({
                           id={entry.id}
                           title={entry.title}
                           location={entry.location}
-                          rating={entry.rating}
                           notes={entry.notes}
                           date_created={entry.date_created}
+                          reaction={entry.reaction}
                       />
                   </CardWrapper>
               )): null}

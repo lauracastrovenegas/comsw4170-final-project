@@ -9,7 +9,7 @@ import { myLists } from '../data/myLists';
 
 
 const PageWrapper = styled.div`
-  padding: 0.5rem;
+  padding: 1rem;
 `;
 
 const Title = styled.div`
@@ -18,8 +18,16 @@ const Title = styled.div`
 `;
 
 const ListCards = styled.div`
+  margin: 0rem auto;
+  padding-bottom: 2rem;
   display: flex;
   flex-wrap: wrap;
+  overflow: scroll;
+  max-height: 70vh;
+  ::-webkit-scrollbar {
+    width: 0;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just make scrollbar invisible */
+  }
 `;
 
 const CardWrapper = styled.div`
@@ -41,6 +49,46 @@ const MyLists = () => {
       <SearchBar barText={searchBarText} setBarText={updateSearch} placeholder="Lists, Categories ..."/>
       <ListCards>
         {myLists.map(list => (
+              <CardWrapper key={list.id}>
+                  <ListCard 
+                      id={list.id}
+                      title={list.title}
+                      date_created={list.date_created}
+                      category={list.category}
+                  />
+              </CardWrapper>
+          ))}
+          {myLists.map(list => (
+              <CardWrapper key={list.id}>
+                  <ListCard 
+                      id={list.id}
+                      title={list.title}
+                      date_created={list.date_created}
+                      category={list.category}
+                  />
+              </CardWrapper>
+          ))}
+          {myLists.map(list => (
+              <CardWrapper key={list.id}>
+                  <ListCard 
+                      id={list.id}
+                      title={list.title}
+                      date_created={list.date_created}
+                      category={list.category}
+                  />
+              </CardWrapper>
+          ))}
+          {myLists.map(list => (
+              <CardWrapper key={list.id}>
+                  <ListCard 
+                      id={list.id}
+                      title={list.title}
+                      date_created={list.date_created}
+                      category={list.category}
+                  />
+              </CardWrapper>
+          ))}
+          {myLists.map(list => (
               <CardWrapper key={list.id}>
                   <ListCard 
                       id={list.id}

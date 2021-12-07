@@ -11,6 +11,7 @@ const NavWrapper = styled.div`
     width: 100%;
     border-top: 1px solid ${(props) => props.theme.colors.lightGray};
     background-color: ${(props) => props.theme.colors.fullWhite};
+    height: 4.5rem;
 `;
 
 const MenuItem = styled.a`
@@ -34,14 +35,26 @@ const IconText = styled.div`
 `;
 
 export const NavBar = () => {
+
+    const tabs = [
+        {
+            route: "/",
+            icon: faCompass,
+            label: "Discover"
+        },{
+            route: "/my-lists/",
+            icon: faListUl,
+            label: "My Lists"
+        }
+    ]
+
     return (
         <NavWrapper>
-            <MenuItem href="/">
-                <Icon><FontAwesomeIcon icon={faCompass} /></Icon>
-            </MenuItem>
-            <MenuItem href="/my-lists/">
-                <Icon><FontAwesomeIcon icon={faListUl} /></Icon>
-            </MenuItem>
+            {tabs.map(tab => (
+                <MenuItem href={tab.route}>
+                  <Icon><FontAwesomeIcon icon={tab.icon}/></Icon>
+                </MenuItem>
+            ))}
         </NavWrapper>
     );
 }
