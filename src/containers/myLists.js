@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react';
 import SearchBar from '../components/searchBar';
 import { ListCard } from '../components/listCard';
 import { myLists } from '../data/myLists';
+import { AddButton } from '../components/addFloatButton';
 
 
 const PageWrapper = styled.div`
@@ -34,6 +35,13 @@ const CardWrapper = styled.div`
   flex-grow: 1;
   max-width: 45%;
   margin: 0.5rem;
+`;
+
+const AddButtonWrapper = styled.div`
+  z-index: 1; 
+  position: absolute; 
+  bottom: 6rem; 
+  right: 1rem;
 `;
 
 const MyLists = () => {
@@ -99,6 +107,7 @@ const MyLists = () => {
               </CardWrapper>
           ))}
       </ListCards>
+      <AddButtonWrapper><AddButton route="/list-form/"/></AddButtonWrapper>
     </PageWrapper>
   );
 }

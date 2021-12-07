@@ -14,7 +14,7 @@ const EntryFormPage = ({
 
   return (
       <PageWrapper>
-         This is an entry
+         This is the entry form
       </PageWrapper>
   );
 }

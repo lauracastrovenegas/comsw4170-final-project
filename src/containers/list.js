@@ -8,6 +8,7 @@ import SearchBar from '../components/searchBar';
 import { myLists } from '../data/myLists';
 import { EntryCard } from '../components/entryCard';
 import { BackButton } from '../components/backBtn';
+import { AddButton } from '../components/addFloatButton';
 
 const PageWrapper = styled.div`
   padding: 1rem;
@@ -30,6 +31,13 @@ const CardWrapper = styled.div`
 const Title = styled.div`
   padding: 0.7rem;
   font-size: 2rem;
+`;
+
+const AddButtonWrapper = styled.div`
+  z-index: 1; 
+  position: absolute; 
+  bottom: 6rem; 
+  right: 1rem;
 `;
 
 const ListPage = ({
@@ -76,6 +84,7 @@ const ListPage = ({
                   </CardWrapper>
               )): null}
           </EntryCards>
+          <AddButtonWrapper><AddButton route="/entry-form/"/></AddButtonWrapper>
       </PageWrapper>
   );
 }

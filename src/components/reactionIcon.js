@@ -21,7 +21,6 @@ export const ReactionIcon = ({
     reaction
 }) => { 
 
-    console.log(reaction);
     const Reaction = () => {
         if (reaction === "happy"){
             return <FontAwesomeIcon icon={faSmile}/>

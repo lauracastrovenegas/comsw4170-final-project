@@ -14,7 +14,7 @@ const ListFormPage = ({
 
   return (
       <PageWrapper>
-         This is an entry
+         This is the list form
       </PageWrapper>
   );
 }
