@@ -7,8 +7,14 @@ import SearchBar from '../components/searchBar';
 import { ListCard } from '../components/listCard';
 import { myLists } from '../data/myLists';
 
-const PageWrapper = styled.div`
 
+const PageWrapper = styled.div`
+  padding: 0.5rem;
+`;
+
+const Title = styled.div`
+  font-size: 2rem;
+  margin: 1rem;
 `;
 
 const ListCards = styled.div`
@@ -17,7 +23,9 @@ const ListCards = styled.div`
 `;
 
 const CardWrapper = styled.div`
-  width: 50%;
+  flex-grow: 1;
+  max-width: 45%;
+  margin: 0.5rem;
 `;
 
 const MyLists = () => {
@@ -29,6 +37,7 @@ const MyLists = () => {
 
   return (
     <PageWrapper>
+      <Title>My Lists</Title>
       <SearchBar barText={searchBarText} setBarText={updateSearch} placeholder="Lists, Categories ..."/>
       <ListCards>
         {myLists.map(list => (

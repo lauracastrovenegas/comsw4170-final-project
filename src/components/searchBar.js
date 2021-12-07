@@ -7,6 +7,7 @@ const SearchBox = styled.div`
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
   margin: 0.5rem auto;
   width: fit-content;
+  background-color: ${(props) => props.theme.colors.fullWhite};
 `;
 
 const Bar = styled.input`
@@ -16,7 +17,6 @@ const Bar = styled.input`
   box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.10);
   height: 39px;
   border: 0px;
-  background-color: ${(props) => props.theme.colors.fullWhite};
   color: ${(props) => props.theme.colors.gray};
   font-weight: 500;
   font-size:18px;

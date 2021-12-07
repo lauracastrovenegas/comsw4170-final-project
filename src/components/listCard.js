@@ -5,30 +5,29 @@
 import React from "react";
 import styled from "styled-components";
 
-const CardWrapper = styled.div`
-    border: 2px solid ${(props) => props.theme.colors.gray};
-    margin: 0.5rem;
-    
-    a {
-        text-decoration: none;
-        color: black;
-    }
+const CardWrapper = styled.a`
+    text-decoration: none;
+    color: black;
 `;
 
 const Card = styled.div`
-
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    background-color: ${(props) => props.theme.colors.fullWhite};
+    border-radius: 7px;
+    box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.10);
+    border: 0px;
 `;
 
 export const ListCard = ({id, category, title, date_created}) => {
     return (
-        <CardWrapper>
-        <a href={`/list/${id}`}>
+        <CardWrapper href={`/list/${id}`}>
             <Card>
                 <div>{title}</div>
                 <div>{category}</div>
                 <div>{date_created}</div>
             </Card>
-        </a>
         </CardWrapper>
     );
 }

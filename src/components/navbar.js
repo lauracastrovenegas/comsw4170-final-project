@@ -1,14 +1,16 @@
 import React from "react";
 import styled from "styled-components";
-import discoverIcon from "../assets/discover-icon.png";
-import listIcon from "../assets/list-icon.png";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faListUl } from '@fortawesome/free-solid-svg-icons'
+import { faCompass } from '@fortawesome/free-regular-svg-icons'
 
 const NavWrapper = styled.div`
     display: flex;
     position: fixed;
     bottom: 0;
     width: 100%;
-    background-color: ${(props) => props.theme.colors.blue};
+    border-top: 1px solid ${(props) => props.theme.colors.lightGray};
+    background-color: ${(props) => props.theme.colors.fullWhite};
 `;
 
 const MenuItem = styled.a`
@@ -20,9 +22,9 @@ const MenuItem = styled.a`
 
 const Icon = styled.div`
     width: fit-content;
-    margin: 0rem auto;
-    img{
-        width: 2rem;
+    margin: 0.7rem auto;
+    svg{
+        font-size: 2rem;
     } 
 `;
 
@@ -35,12 +37,10 @@ export const NavBar = () => {
     return (
         <NavWrapper>
             <MenuItem href="/">
-                <Icon><img src={discoverIcon}/></Icon>
-                <IconText>Discover</IconText>
+                <Icon><FontAwesomeIcon icon={faCompass} /></Icon>
             </MenuItem>
             <MenuItem href="/my-lists/">
-                <Icon><img src={listIcon}/></Icon>
-                <IconText>My Lists</IconText>
+                <Icon><FontAwesomeIcon icon={faListUl} /></Icon>
             </MenuItem>
         </NavWrapper>
     );

@@ -7,9 +7,10 @@ import { useState, useEffect } from 'react';
 import SearchBar from '../components/searchBar';
 import { myLists } from '../data/myLists';
 import { EntryCard } from '../components/entryCard';
+import { BackButton } from '../components/backBtn';
 
 const PageWrapper = styled.div`
-
+  padding: 1rem;
 `;
 
 const EntryCards = styled.div`
@@ -17,7 +18,12 @@ const EntryCards = styled.div`
 `;
 
 const CardWrapper = styled.div`
+  margin: 1rem 0rem;
+`;
 
+const Title = styled.div`
+  padding: 0.7rem;
+  font-size: 2rem;
 `;
 
 const ListPage = ({
@@ -46,7 +52,8 @@ const ListPage = ({
 
   return (
       <PageWrapper>
-        <h1>{list.title}</h1>
+        <BackButton text="My Lists" route={`/my-lists/`}/>
+        <Title>{list.title}</Title>
           <SearchBar barText={searchBarText} setBarText={updateSearch} placeholder="Search..."/>
           <EntryCards>
             {list.entries ? list.entries.map(entry => (
