@@ -28,7 +28,7 @@ const Content = styled.div`
     display: inline-block;
 `;
 
-export const EntryCard = ({listid, id, title, location, notes, date_created, reaction}) => {
+export const EntryCard = ({listid, id, title, location, notes, date_created, reaction, isPinned}) => {
     return (
         <Card href={`/list/${listid}/${id}`}>
             <CardWrapper>
@@ -36,6 +36,7 @@ export const EntryCard = ({listid, id, title, location, notes, date_created, rea
                 <Content>
                     <div>{title}</div>
                     <div>{date_created}</div>
+                    <div>{(isPinned ? "pinned":"not pinned")}</div>
                 </Content>
             </CardWrapper>
         </Card>

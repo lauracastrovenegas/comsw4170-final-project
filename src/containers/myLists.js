@@ -63,46 +63,8 @@ const MyLists = () => {
                       title={list.title}
                       date_created={list.date_created}
                       category={list.category}
-                  />
-              </CardWrapper>
-          ))}
-          {myLists.map(list => (
-              <CardWrapper key={list.id}>
-                  <ListCard 
-                      id={list.id}
-                      title={list.title}
-                      date_created={list.date_created}
-                      category={list.category}
-                  />
-              </CardWrapper>
-          ))}
-          {myLists.map(list => (
-              <CardWrapper key={list.id}>
-                  <ListCard 
-                      id={list.id}
-                      title={list.title}
-                      date_created={list.date_created}
-                      category={list.category}
-                  />
-              </CardWrapper>
-          ))}
-          {myLists.map(list => (
-              <CardWrapper key={list.id}>
-                  <ListCard 
-                      id={list.id}
-                      title={list.title}
-                      date_created={list.date_created}
-                      category={list.category}
-                  />
-              </CardWrapper>
-          ))}
-          {myLists.map(list => (
-              <CardWrapper key={list.id}>
-                  <ListCard 
-                      id={list.id}
-                      title={list.title}
-                      date_created={list.date_created}
-                      category={list.category}
+                      isPinned={list.isPinned}
+                      currentRoute="My Lists"
                   />
               </CardWrapper>
           ))}

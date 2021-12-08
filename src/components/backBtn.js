@@ -2,19 +2,18 @@
 
 import React from "react";
 import styled from "styled-components";
+import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons'
 
-const Wrapper = styled.a`
+const Wrapper = styled.button`
     display: flex;
     width: fit-content;
     padding: 1rem 0rem;
-    text-decoration: none;
-    color: black;
     border-radius: 7px;
-    :active {
-        background-color: none;
-    }
+    border: 0px solid black;
+    background-color: transparent;
+    font-size: 1rem;
 `;
 const Icon = styled.div`
     padding: 0rem 0.5rem;
@@ -27,10 +26,12 @@ export const BackButton = ({
     text, // text of button
     route // route
 }) => {
+    const navigate = useNavigate();
+
     return (
-        <Wrapper href={route}>
+        <Wrapper onClick={() => navigate(-1)}>
             <Icon><FontAwesomeIcon icon={faChevronLeft}/></Icon>
-            <Text>{text}</Text>
+            <Text>Back</Text>
         </Wrapper>
     );
 }

@@ -4,10 +4,29 @@
 
 import React from "react";
 import styled from "styled-components";
+import { ListCard } from "./listCard";
 
 const Wrapper = styled.div`
     display: flex;
-    background-color: ${(props) => props.theme.colors.blue};
+    flex-direction: column;
+    background-color: ${(props) => props.theme.colors.fullWhite};
+    margin: 1rem;
+`;
+
+const Title = styled.div`
+    font-size: 1.5rem;
+`;
+
+const ListCards = styled.div`
+    display: flex;
+    width: 100%;
+    overflow: scroll;
+`;
+
+const CardWrapper = styled.div`
+    min-width: 10rem;
+    max-width: 10rem;
+    margin: 0.5rem 0.25rem;
 `;
 
 export const CategoryCarousel = ({
@@ -16,7 +35,21 @@ export const CategoryCarousel = ({
 }) => {
     return (
             <Wrapper>
-                This is a carousel for a category
+                <Title>{category}</Title>
+                <ListCards>
+                    {lists.map(list => (
+                        <CardWrapper key={list.id}>
+                            <ListCard 
+                                id={list.id}
+                                title={list.title}
+                                date_created={list.date_created}
+                                category={list.category}
+                                isPinned={false}
+                                currentRoute="Discover"
+                            />
+                        </CardWrapper>
+                    ))}
+                </ListCards>
             </Wrapper>
     );
 }
