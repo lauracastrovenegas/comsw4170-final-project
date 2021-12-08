@@ -1,10 +1,12 @@
 export const myLists = [
     {
         id: "1",
-        title: "List #1",
-        category: "Restaurants",
+        title: "Childhood Recipes",
+        category: "Recipes",
         date_created: "December 3, 2021",
+        image_URL: "https://list-it.s3.amazonaws.com/lily-banse--YHSwy6uqvk-unsplash.jpg",
         isPinned: true,
+        isPublic: false,
         entries: [
             {
                 id: "1",
@@ -64,10 +66,12 @@ export const myLists = [
     },
     {
         id: "2",
-        title: "List #2",
+        title: "Books for Subway Rides",
         category: "Books",
         date_created: "December 3, 2021",
+        image_URL: "https://list-it.s3.amazonaws.com/daria-nepriakhina-xY55bL5mZAM-unsplash.jpg",
         isPinned: true,
+        isPublic: true,
         entries: [
             {
                 id: "1",
@@ -89,10 +93,12 @@ export const myLists = [
     },
     {
         id: "3",
-        title: "List #3",
-        category: "Recipes",
+        title: "Best International TV Shows",
+        category: "TV Shows",
         date_created: "December 3, 2021",
+        image_URL: "https://list-it.s3.amazonaws.com/jonas-augustin-sZIF10zFs60-unsplash.jpg",
         isPinned: false,
+        isPublic: true,
         entries: [
             {
                 id: "1",
@@ -114,10 +120,12 @@ export const myLists = [
     },
     {
         id: "4",
-        title: "List #1",
-        category: "Restaurants",
+        title: "International Psycho Thrillers",
+        category: "TV Shows",
         date_created: "December 3, 2021",
+        image_URL: "https://list-it.s3.amazonaws.com/maxresdefault.jpeg",
         isPinned: false,
+        isPublic: false,
         entries: [
             {
                 id: "1",
@@ -177,10 +185,12 @@ export const myLists = [
     },
     {
         id: "5",
-        title: "List #2",
-        category: "Books",
+        title: "Sinks in NYC",
+        category: "Locations",
         date_created: "December 3, 2021",
+        image_URL: "https://list-it.s3.amazonaws.com/andrew-donovan-valdivia-VRX38E5eJrs-unsplash.jpg",
         isPinned: false,
+        isPublic: false,
         entries: [
             {
                 id: "1",
@@ -202,10 +212,12 @@ export const myLists = [
     },
     {
         id: "6",
-        title: "List #3",
-        category: "Recipes",
+        title: "NYC Date Spots",
+        category: "Locations",
         date_created: "December 3, 2021",
+        image_URL: "https://list-it.s3.amazonaws.com/matteo-miliddi-l-jzubWnnx8-unsplash.jpg",
         isPinned: false,
+        isPublic: true,
         entries: [
             {
                 id: "1",
@@ -227,10 +239,12 @@ export const myLists = [
     },
     {
         id: "7",
-        title: "List #1",
-        category: "Restaurants",
+        title: "Movies with the LOML",
+        category: "Movies",
         date_created: "December 3, 2021",
+        image_URL: "https://list-it.s3.amazonaws.com/Villeneuve-Dune-courtesy-of-TV-Insider.jpeg",
         isPinned: false,
+        isPublic: false,
         entries: [
             {
                 id: "1",
@@ -290,10 +304,12 @@ export const myLists = [
     },
     {
         id: "8",
-        title: "List #2",
-        category: "Books",
+        title: "Chinese Recipes I want to try",
+        category: "Recipes",
         date_created: "December 3, 2021",
+        image_URL: "https://list-it.s3.amazonaws.com/charles-deluvio-D-vDQMTfAAU-unsplash.jpg",
         isPinned: false,
+        isPublic: false,
         entries: [
             {
                 id: "1",
@@ -318,7 +334,9 @@ export const myLists = [
         title: "List #3",
         category: "Recipes",
         date_created: "December 3, 2021",
+        image_URL: "https://list-it.s3.amazonaws.com/charles-deluvio-D-vDQMTfAAU-unsplash.jpg",
         isPinned: false,
+        isPublic: false,
         entries: [
             {
                 id: "1",
@@ -343,7 +361,9 @@ export const myLists = [
         title: "List #1",
         category: "Restaurants",
         date_created: "December 3, 2021",
+        image_URL: "https://list-it.s3.amazonaws.com/charles-deluvio-D-vDQMTfAAU-unsplash.jpg",
         isPinned: false,
+        isPublic: false,
         entries: [
             {
                 id: "1",
@@ -406,7 +426,9 @@ export const myLists = [
         title: "List #2",
         category: "Books",
         date_created: "December 3, 2021",
+        image_URL: "https://list-it.s3.amazonaws.com/charles-deluvio-D-vDQMTfAAU-unsplash.jpg",
         isPinned: false,
+        isPublic: false,
         entries: [
             {
                 id: "1",
@@ -431,7 +453,9 @@ export const myLists = [
         title: "List #3",
         category: "Recipes",
         date_created: "December 3, 2021",
+        image_URL: "https://list-it.s3.amazonaws.com/charles-deluvio-D-vDQMTfAAU-unsplash.jpg",
         isPinned: false,
+        isPublic: false,
         entries: [
             {
                 id: "1",
