@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faListUl } from '@fortawesome/free-solid-svg-icons'
 import { faCompass } from '@fortawesome/free-regular-svg-icons'
+import { faHome } from "@fortawesome/free-solid-svg-icons";
 
 const NavWrapper = styled.div`
     display: flex;
@@ -37,6 +38,11 @@ const IconText = styled.div`
 export const NavBar = () => {
 
     const tabs = [
+        {
+            route: "/home/",
+            icon: faHome,
+            label: "Home"
+        },
         {
             route: "/",
             icon: faCompass,
