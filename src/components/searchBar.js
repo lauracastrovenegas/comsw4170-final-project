@@ -6,12 +6,11 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons'
 const SearchBox = styled.div`
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
   margin: 0.5rem auto;
-  width: fit-content;
   background-color: ${(props) => props.theme.colors.fullWhite};
 `;
 
 const Bar = styled.input`
-  width: 80vw;
+  min-width: 55vw;
   padding-left: 3rem;
   border-radius: 7px;
   box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.10);

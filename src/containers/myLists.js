@@ -7,27 +7,61 @@ import SearchBar from '../components/searchBar';
 import { ListCard } from '../components/listCard';
 import { myLists } from '../data/myLists';
 import { AddButton } from '../components/addFloatButton';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUserCircle } from '@fortawesome/free-regular-svg-icons';
+import { SortIcon } from '../components/sortIcon';
 
 
 const PageWrapper = styled.div`
   padding: 1rem;
 `;
 
+const Header = styled.div`
+  display: flex;
+`;
+
 const Title = styled.div`
   font-size: 2rem;
-  margin: 1rem;
+  margin: 0.5rem 1rem;
+  font-weight: 700;
+  color: ${(props) => props.theme.colors.blue};
 `;
+
+const ProfileIcon = styled.div`
+  margin: auto 0.5rem auto auto;
+  svg {
+    font-size: 1.5rem;
+    color: ${(props) => props.theme.colors.gray};
+  }
+`;
+
+const SearchBarBox = styled.div`
+  display: flex;
+`;
+
+const TagIcon = styled.div`
+  img {
+    width: 1.5rem;
+  }
+  margin: auto 0.25rem;
+`;
+
+const Icons = styled.div`
+  margin-left: auto;
+  margin-right: 0.5rem;
+  display: flex;
+`
 
 const ListCards = styled.div`
   margin: 0rem auto;
-  padding-bottom: 2rem;
+  padding-bottom: 2.5rem;
   display: flex;
   flex-wrap: wrap;
   overflow: scroll;
   max-height: 70vh;
   ::-webkit-scrollbar {
-    width: 0;  /* Remove scrollbar space */
-    background: transparent;  /* Optional: just make scrollbar invisible */
+    width: 0; 
+    background: transparent;
   }
 `;
 
@@ -53,8 +87,17 @@ const MyLists = () => {
 
   return (
     <PageWrapper>
-      <Title>My Lists</Title>
-      <SearchBar barText={searchBarText} setBarText={updateSearch} placeholder="Lists, Categories ..."/>
+      <Header>
+        <Title>ListIt!</Title>
+        <ProfileIcon><FontAwesomeIcon icon={faUserCircle}/></ProfileIcon>
+      </Header>
+      <SearchBarBox>
+        <SearchBar barText={searchBarText} setBarText={updateSearch} placeholder="Lists, Categories ..."/>
+        <Icons>
+          <TagIcon><img src="https://img.icons8.com/external-kiranshastry-lineal-kiranshastry/64/000000/external-tag-interface-kiranshastry-lineal-kiranshastry.png"/></TagIcon>
+          <SortIcon/>
+        </Icons>
+      </SearchBarBox>
       <ListCards>
         {myLists.map(list => (
               <CardWrapper key={list.id}>
@@ -64,6 +107,8 @@ const MyLists = () => {
                       date_created={list.date_created}
                       category={list.category}
                       isPinned={list.isPinned}
+                      imageURL={list.image_URL}
+                      isPublic={list.isPublic}
                       currentRoute="My Lists"
                   />
               </CardWrapper>
