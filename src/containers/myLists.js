@@ -10,6 +10,7 @@ import { AddButton } from '../components/addFloatButton';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserCircle } from '@fortawesome/free-regular-svg-icons';
 import { SortIcon } from '../components/sortIcon';
+import SearchFilterBox from '../components/searchFilterBox';
 
 
 const PageWrapper = styled.div`
@@ -24,7 +25,7 @@ const Title = styled.div`
   font-size: 2rem;
   margin: 0.5rem 1rem;
   font-weight: 700;
-  color: ${(props) => props.theme.colors.blue};
+  color: ${(props) => props.theme.colors.yellow};
 `;
 
 const ProfileIcon = styled.div`
@@ -35,30 +36,13 @@ const ProfileIcon = styled.div`
   }
 `;
 
-const SearchBarBox = styled.div`
-  display: flex;
-`;
-
-const TagIcon = styled.div`
-  img {
-    width: 1.5rem;
-  }
-  margin: auto 0.25rem;
-`;
-
-const Icons = styled.div`
-  margin-left: auto;
-  margin-right: 0.5rem;
-  display: flex;
-`
-
 const ListCards = styled.div`
   margin: 0rem auto;
   padding-bottom: 2.5rem;
   display: flex;
   flex-wrap: wrap;
   overflow: scroll;
-  max-height: 70vh;
+  max-height: 71vh;
   ::-webkit-scrollbar {
     width: 0; 
     background: transparent;
@@ -74,8 +58,8 @@ const CardWrapper = styled.div`
 const AddButtonWrapper = styled.div`
   z-index: 1; 
   position: absolute; 
-  bottom: 6rem; 
-  right: 1rem;
+  bottom: 5.5rem; 
+  right: 0rem;
 `;
 
 const MyLists = () => {
@@ -91,13 +75,7 @@ const MyLists = () => {
         <Title>ListIt!</Title>
         <ProfileIcon><FontAwesomeIcon icon={faUserCircle}/></ProfileIcon>
       </Header>
-      <SearchBarBox>
-        <SearchBar barText={searchBarText} setBarText={updateSearch} placeholder="Lists, Categories ..."/>
-        <Icons>
-          <TagIcon><img src="https://img.icons8.com/external-kiranshastry-lineal-kiranshastry/64/000000/external-tag-interface-kiranshastry-lineal-kiranshastry.png"/></TagIcon>
-          <SortIcon/>
-        </Icons>
-      </SearchBarBox>
+      <SearchFilterBox barText={searchBarText} setBarText={updateSearch} placeholder="Lists, Categories ..." margin="0.7"/>
       <ListCards>
         {myLists.map(list => (
               <CardWrapper key={list.id}>
