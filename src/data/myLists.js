@@ -12,10 +12,13 @@ export const myLists = [
                 id: "1",
                 title: "Chipotle",
                 location: "123 Riverside Dr",
-                notes: "blah blah blah",
+                notes: "blah blah blah this is a lot of text to test the description box blah blah blah blah blah blah this is a lot of text to test the description box blah blah blah blah blah blah this is a lot of text to test the description box blah blah blah",
                 date_created: "December 3, 2021",
                 reaction: "",
-                isPinned: true
+                rate: 5,
+                isPinned: true,
+                photos: ["https://list-it.s3.amazonaws.com/lily-banse--YHSwy6uqvk-unsplash.jpg","https://list-it.s3.amazonaws.com/lily-banse--YHSwy6uqvk-unsplash.jpg"],
+                link: "https://list-it.s3.amazonaws.com/lily-banse--YHSwy6uqvk-unsplash.jpg"
             },
             {
                 id: "2",
