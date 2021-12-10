@@ -6,10 +6,12 @@ const theme = {
     darkRed: '#c63416',
     black: '#000000',
     white: '#F4F6F8',
-    gray: '#9A9A9A',
-    lightGray: '#E7E7E7',
+    gray: '#7A7A7A',
+    lightGray: '#F1F1F1',
     checkboxGray: '#696969',
-    fullWhite: '#ffffff'
+    fullWhite: '#ffffff',
+    opaqueWhite: "rgba(255, 255, 255, 0.72)",
+    yellow: "#FFBE0C"
   },
 };
 
