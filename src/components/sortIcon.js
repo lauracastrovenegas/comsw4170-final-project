@@ -3,8 +3,7 @@
 import React, { useEffect } from "react";
 import styled from "styled-components/macro";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faLongArrowAltUp } from '@fortawesome/free-solid-svg-icons'
-import { faLongArrowAltDown } from '@fortawesome/free-solid-svg-icons'
+import { faSlidersH } from '@fortawesome/free-solid-svg-icons'
 
 const IconWrapper = styled.div`
     width: 1rem;
@@ -19,8 +18,7 @@ const IconWrapper = styled.div`
 export const SortIcon = ({}) => {
     return (
         <IconWrapper>
-            <FontAwesomeIcon icon={faLongArrowAltUp}/>
-            <FontAwesomeIcon icon={faLongArrowAltDown}/>
+            <FontAwesomeIcon icon={faSlidersH}/>
         </IconWrapper>
     );
 }
