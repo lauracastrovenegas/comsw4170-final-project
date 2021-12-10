@@ -14,6 +14,8 @@ const Wrapper = styled.button`
     border: 0px solid black;
     background-color: transparent;
     font-size: 1rem;
+    color: ${props => props.textColor};
+    text-shadow: 0.5px 0.5px ${(props) => props.theme.colors.gray};
 `;
 const Icon = styled.div`
     padding: 0rem 0.5rem;
@@ -24,14 +26,15 @@ const Text = styled.div`
 
 export const BackButton = ({
     text, // text of button
+    textColor,
     route // route
 }) => {
     const navigate = useNavigate();
 
     return (
-        <Wrapper onClick={() => navigate(-1)}>
+        <Wrapper onClick={() => navigate(-1)} textColor={textColor}>
             <Icon><FontAwesomeIcon icon={faChevronLeft}/></Icon>
-            <Text>Back</Text>
+            <Text>{text}</Text>
         </Wrapper>
     );
 }
