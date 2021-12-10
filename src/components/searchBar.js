@@ -4,22 +4,20 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 
 const SearchBox = styled.div`
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
   margin: 0.5rem auto;
-  background-color: ${(props) => props.theme.colors.fullWhite};
 `;
 
 const Bar = styled.input`
-  min-width: 55vw;
+  min-width: 60vw;
   padding-left: 3rem;
-  border-radius: 7px;
-  box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.10);
+  border-radius: 15px;
   height: 39px;
   border: 0px;
   color: ${(props) => props.theme.colors.gray};
   font-weight: 500;
   font-size:18px;
   line-height:21px;
+  background-color: ${(props) => props.theme.colors.lightGray};
 
   ::placeholder {
       color: inherit;
