@@ -6,14 +6,111 @@ import { useParams } from 'react-router';
 import { useState, useEffect } from 'react';
 import { myLists } from '../data/myLists';
 import { BackButton } from '../components/backBtn';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
+import { RateComponent } from '../components/rateComponent';
 
 const PageWrapper = styled.div`
-  padding: 1rem 1rem 4.5rem 1rem;
+  background-color: ${(props) => props.theme.colors.fullWhite};
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+`;
+
+const TopContainer = styled.div`
+  flex: 1 1 auto;
+  background-image: url(${props => props.imageurl});
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover;
+  min-height: 35vh;
+  margin-bottom: -2rem;
+`;
+
+const ContentContainer = styled.div`
+  flex: 0 1 auto;
+  padding-top: 1rem;
+  max-height: fit-content;
+  bottom: 0rem;
+  background-color: ${(props) => props.theme.colors.fullWhite};
+  border-radius: 15px 15px 0px 0px;
+  width: 100vw;
 `;
 
 const Content = styled.div`
-  margin: 1rem;
+  overflow: scroll;
+  max-height: 55vh;
 `;
+
+const BackButtonBox = styled.div`
+  position: absolute; 
+  top: 0rem; 
+  left: 1rem;
+  width: fit-content;
+`;
+
+const OptionsButton = styled.div`
+  position: absolute; 
+  top: 0rem; 
+  right: 1.2rem;
+  width: fit-content;
+  svg {
+    margin-top: 1rem;
+    color: ${(props) => props.theme.colors.fullWhite};
+  }
+`;
+
+const Title = styled.div`
+  margin: 0rem 1.5rem;
+  font-size: 2rem;
+  font-weight: 600;
+  text-overflow: wrap;
+  display: block;
+`;
+
+const Location = styled.div`
+  margin: 1.5rem 0rem;
+`;
+
+const Photos = styled.div`
+  display: flex;
+`;
+
+const Photo = styled.div`
+  img {
+    width: 5rem;
+    height: 5rem;
+    object-fit: cover;
+    border-radius: 15px;
+    margin-right: 1rem;
+  }
+`;
+
+const Link = styled.div`
+  margin: 1.5rem 0rem;
+`;
+
+const NotesBox = styled.div`
+  margin: 0rem 0rem;
+  background-color: ${(props) => props.theme.colors.lightGray};
+  padding: 1.5rem;
+  border-radius: 15px;
+  margin-bottom: 2rem;
+`;
+
+const Rate = styled.div`
+  margin: 0.5rem 1.5rem;
+`;
+
+const SectionTitle = styled.div`
+  font-size: 1.5rem;
+  margin: 0.5rem 0rem;
+  color: ${(props) => props.theme.colors.gray};
+`;
+
+const Section = styled.div`
+  margin: 0.5rem 1.5rem;
+`
 
 const EntryPage = ({}) => {
   const { listid, entryid } = useParams();
@@ -44,15 +141,35 @@ const EntryPage = ({}) => {
 
   return (
       <PageWrapper>
-        <BackButton text={list.title} route={`/list/${listid}`}/>
-        <Content>
-          {entry.title ?
-          (<div>
-            <div>{entry.title}</div>
-            <div>{entry.location}</div>
-            <div>{entry.notes}</div>
-          </div>): null}
-         </Content>
+        <BackButtonBox>
+           <BackButton text={list.title} route={`/list/${listid}`} textColor="white"/>
+        </BackButtonBox>
+        <OptionsButton><FontAwesomeIcon icon={faEllipsisV}/></OptionsButton>
+        <TopContainer imageurl={list.image_URL}/>
+        <ContentContainer>
+          <Title>{entry.title}</Title>
+          <Content>
+            {entry.rate ? <Rate><RateComponent rate={entry.rate}/></Rate> : null}
+            {entry.location ? <Section><Location>{entry.location}</Location></Section>:null}
+            {entry.photos ? 
+            <Section>
+              <SectionTitle>Photos</SectionTitle>
+              <Photos>
+                {entry.photos.map(photo => (
+                    <Photo>
+                      <img src={photo}/>
+                    </Photo>
+                ))}
+              </Photos>
+            </Section> : null}
+            {entry.link ? <Link></Link>:null}
+            {entry.notes ? 
+            <Section>
+              <SectionTitle>Notes</SectionTitle>
+              <NotesBox>{entry.notes}</NotesBox>
+            </Section>:null}
+          </Content>
+        </ContentContainer>
       </PageWrapper>
   );
 }

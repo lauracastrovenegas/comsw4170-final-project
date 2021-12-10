@@ -4,7 +4,7 @@
 
 import React from "react";
 import styled from "styled-components";
-import { ReactionIcon } from "./reactionIcon";
+import { RateComponent } from "./rateComponent";
 
 const Card = styled.a`
     text-decoration: none;
@@ -13,31 +13,31 @@ const Card = styled.a`
 `;
 
 const CardWrapper = styled.div`
-    padding: 1rem;
-    width: 80vw;
+    padding: 1.2rem;
     display: flex;
     flex-direction: row;
-    margin: 0.5rem auto;
     background-color: ${(props) => props.theme.colors.fullWhite};
-    border-radius: 7px;
-    box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.10);
-    border: 0px;
+    border-top: 0.5px solid ${(props) => props.theme.colors.lightGray};
 `;
 
-const Content = styled.div`
-    display: inline-block;
+const Title = styled.div`
+    white-space: nowrap;
+    overflow: hidden;
+    display: block;
+    text-overflow: ellipsis;
+    font-size: 1.2rem;
+`;
+
+const RateWrapper = styled.div`
+    margin-left: auto;
 `;
 
 export const EntryCard = ({listid, id, title, location, notes, date_created, reaction, isPinned}) => {
     return (
         <Card href={`/list/${listid}/${id}`}>
             <CardWrapper>
-                <ReactionIcon reaction={reaction}/>
-                <Content>
-                    <div>{title}</div>
-                    <div>{date_created}</div>
-                    <div>{(isPinned ? "pinned":"not pinned")}</div>
-                </Content>
+                <Title>{title}</Title>
+                <RateWrapper><RateComponent rate={2}/></RateWrapper>
             </CardWrapper>
         </Card>
     );
