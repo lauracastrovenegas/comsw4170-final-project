@@ -9,6 +9,7 @@ import { BackButton } from '../components/backBtn';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 import { RateComponent } from '../components/rateComponent';
+import { LinkPreview } from '../components/linkPreview';
 
 const PageWrapper = styled.div`
   background-color: ${(props) => props.theme.colors.fullWhite};
@@ -29,7 +30,6 @@ const TopContainer = styled.div`
 
 const ContentContainer = styled.div`
   flex: 0 1 auto;
-  padding-top: 1rem;
   max-height: fit-content;
   bottom: 0rem;
   background-color: ${(props) => props.theme.colors.fullWhite};
@@ -38,8 +38,9 @@ const ContentContainer = styled.div`
 `;
 
 const Content = styled.div`
+  padding-top: 1.5rem;
   overflow: scroll;
-  max-height: 55vh;
+  max-height: 60vh;
 `;
 
 const BackButtonBox = styled.div`
@@ -61,7 +62,7 @@ const OptionsButton = styled.div`
 `;
 
 const Title = styled.div`
-  margin: 0rem 1.5rem;
+  margin: 0rem 1.5rem 1rem 1.5rem;
   font-size: 2rem;
   font-weight: 600;
   text-overflow: wrap;
@@ -69,11 +70,12 @@ const Title = styled.div`
 `;
 
 const Location = styled.div`
-  margin: 1.5rem 0rem;
+  margin: 1rem 0rem;
 `;
 
 const Photos = styled.div`
   display: flex;
+  overflow: scroll;
 `;
 
 const Photo = styled.div`
@@ -95,11 +97,11 @@ const NotesBox = styled.div`
   background-color: ${(props) => props.theme.colors.lightGray};
   padding: 1.5rem;
   border-radius: 15px;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
 `;
 
 const Rate = styled.div`
-  margin: 0.5rem 1.5rem;
+  margin: 0rem 1.5rem;
 `;
 
 const SectionTitle = styled.div`
@@ -109,7 +111,7 @@ const SectionTitle = styled.div`
 `;
 
 const Section = styled.div`
-  margin: 0.5rem 1.5rem;
+  margin: 1rem 1.5rem;
 `
 
 const EntryPage = ({}) => {
@@ -145,10 +147,10 @@ const EntryPage = ({}) => {
            <BackButton text={list.title} route={`/list/${listid}`} textColor="white"/>
         </BackButtonBox>
         <OptionsButton><FontAwesomeIcon icon={faEllipsisV}/></OptionsButton>
-        <TopContainer imageurl={list.image_URL}/>
+        <TopContainer imageurl={entry.photos ? entry.photos[0] : list.image_URL}/>
         <ContentContainer>
-          <Title>{entry.title}</Title>
           <Content>
+            <Title>{entry.title}</Title>
             {entry.rate ? <Rate><RateComponent rate={entry.rate}/></Rate> : null}
             {entry.location ? <Section><Location>{entry.location}</Location></Section>:null}
             {entry.photos ? 
@@ -162,7 +164,7 @@ const EntryPage = ({}) => {
                 ))}
               </Photos>
             </Section> : null}
-            {entry.link ? <Link></Link>:null}
+            {entry.link ? <Section><SectionTitle>Link</SectionTitle><LinkPreview url={entry.link}/></Section>:null}
             {entry.notes ? 
             <Section>
               <SectionTitle>Notes</SectionTitle>
