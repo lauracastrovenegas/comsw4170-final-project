@@ -129,7 +129,7 @@ const ListPage = ({
           <Title>{list.title}</Title>
         </TopContainer>
         <ContentContainer>
-          <SearchFilterBox barText={searchBarText} setBarText={updateSearch} placeholder="Search..." margin="1.3"/>
+          <SearchFilterBox barText={searchBarText} setBarText={updateSearch} placeholder="Search List..." margin="1.3"/>
           <EntryCards>
             {list.entries ? list.entries.map(entry => (
                   <CardWrapper key={list.id}>
