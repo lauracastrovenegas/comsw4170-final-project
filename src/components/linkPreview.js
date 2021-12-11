@@ -80,7 +80,7 @@ export const LinkPreview = ({
     const key = "e109c1dcf4278763037690080b29af44";
 
     useEffect(() => {
-        //getLinkInfo(url)
+        getLinkInfo(url)
     }, []);
 
     const getLinkInfo = async (url) => {

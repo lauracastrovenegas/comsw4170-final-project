@@ -7,7 +7,7 @@ const SearchBox = styled.div`
   display: flex;
 `;
 
-const Icon = styled.div`
+const Icon = styled.i`
   margin-right: ${props => props.margin}rem;
   display: flex;
 `;
@@ -16,12 +16,13 @@ const SearchFilterBox = ({
   barText,
   setBarText,
   placeholder,
-  margin
+  margin,
+  toggleFilter
 }) => {
     return (
         <SearchBox>
           <SearchBar barText={barText} setBarText={setBarText} placeholder={placeholder}/>
-          <Icon margin={margin}><SortIcon/></Icon>
+          <Icon margin={margin} onClick={() => toggleFilter()}><SortIcon/></Icon>
         </SearchBox>
     )
 };

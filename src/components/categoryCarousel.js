@@ -13,18 +13,20 @@ const Wrapper = styled.div`
 `;
 
 const Title = styled.div`
-    font-size: 1.5rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+    padding-left: 0.3rem;
 `;
 
 const ListCards = styled.div`
     display: flex;
-    width: 90vw;
+    width: 95vw;
     overflow: scroll;
 `;
 
 const CardWrapper = styled.div`
-    min-width: 9rem;
-    max-width: 9rem;
+    min-width: 10rem;
+    max-width: 10rem;
     margin: 0.5rem 0.25rem;
 `;
 

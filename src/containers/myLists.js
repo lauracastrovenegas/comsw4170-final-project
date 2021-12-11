@@ -9,10 +9,15 @@ import { AddButton } from '../components/addFloatButton';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserCircle } from '@fortawesome/free-regular-svg-icons';
 import SearchFilterBox from '../components/searchFilterBox';
+import { FilterPopUp } from '../components/filterPopup';
 
 
 const PageWrapper = styled.div`
-  padding: 1rem;
+  
+`;
+
+const Content = styled.div`
+  padding: 1rem 1rem 0rem 1rem;
 `;
 
 const Header = styled.div`
@@ -20,7 +25,7 @@ const Header = styled.div`
 `;
 
 const Title = styled.div`
-  font-size: 2rem;
+  font-size: 36px;
   margin: 0.5rem 1rem;
   font-weight: 700;
   color: ${(props) => props.theme.colors.yellow};
@@ -40,7 +45,7 @@ const ListCards = styled.div`
   display: flex;
   flex-wrap: wrap;
   overflow: scroll;
-  max-height: 71vh;
+  max-height: 72vh;
   ::-webkit-scrollbar {
     width: 0; 
     background: transparent;
@@ -62,18 +67,24 @@ const AddButtonWrapper = styled.div`
 
 const MyLists = () => {
   const [searchBarText, setSearchBarText] = useState('');
+  const [isOpen, setOpen] = useState(false);
 
   const updateSearch = async (input) => {
     setSearchBarText(input);
   };
 
+  const toggleFilters = () => {
+    setOpen(!isOpen)
+  }
+
   return (
     <PageWrapper>
+      <Content>
       <Header>
         <Title>ListIt!</Title>
         <ProfileIcon><FontAwesomeIcon icon={faUserCircle}/></ProfileIcon>
       </Header>
-      <SearchFilterBox barText={searchBarText} setBarText={updateSearch} placeholder="Search Your Lists..." margin="0.7"/>
+      <SearchFilterBox toggleFilter={toggleFilters} barText={searchBarText} setBarText={updateSearch} placeholder="Search Your Lists..." margin="0.7"/>
       <ListCards>
         {myLists.map(list => (
               <CardWrapper key={list.id}>
@@ -91,6 +102,8 @@ const MyLists = () => {
           ))}
       </ListCards>
       <AddButtonWrapper><AddButton route="/list-form/"/></AddButtonWrapper>
+      </Content>
+      <FilterPopUp closePopup={toggleFilters} isOpen={isOpen}/>
     </PageWrapper>
   );
 }

@@ -7,9 +7,15 @@ import { useState, useEffect } from 'react';
 import SearchFilterBox from '../components/searchFilterBox';
 import { discover_lists } from '../data/discover_lists';
 import { CategoryCarousel } from '../components/categoryCarousel';
+import { FilterPopUp } from '../components/filterPopup';
 
 const PageWrapper = styled.div`
-  padding: 1rem;
+  
+`;
+
+const Content = styled.div`
+  padding: 1rem 0rem 1rem 1rem;
+  margin-bottom: 4.5rem;
 `;
 
 const Header = styled.div`
@@ -17,7 +23,7 @@ const Header = styled.div`
 `;
 
 const Title = styled.div`
-  font-size: 2rem;
+  font-size: 36px;
   margin: 0.5rem 1rem;
   font-weight: 700;
   color: ${(props) => props.theme.colors.yellow};
@@ -42,6 +48,11 @@ const Categories = styled.div`
 
 const DiscoverPage = () => {
   const [searchBarText, setSearchBarText] = useState('');
+  const [isOpen, setOpen] = useState(false);
+
+  const toggleFilters = () => {
+    setOpen(!isOpen)
+  }
 
   const updateSearch = async (input) => {
     setSearchBarText(input);
@@ -49,8 +60,9 @@ const DiscoverPage = () => {
 
   return (
       <PageWrapper>
+        <Content>
         <Title>ListIt!</Title>
-          <SearchFilterBox barText={searchBarText} setBarText={updateSearch} placeholder="Search..." margin="1"/>
+          <SearchFilterBox toggleFilter={toggleFilters} barText={searchBarText} setBarText={updateSearch} placeholder="Search..." margin="1.5"/>
           <Categories>
             {discover_lists ? discover_lists.map(item => (
                   <CarouselWrapper key={item.category}>
@@ -62,6 +74,8 @@ const DiscoverPage = () => {
                   </CarouselWrapper>
               )): null}
           </Categories>
+          </Content>
+          <FilterPopUp closePopup={toggleFilters} isOpen={isOpen}/>
       </PageWrapper>
   );
 }
