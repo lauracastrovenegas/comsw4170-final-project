@@ -163,7 +163,76 @@ export const discover_lists = [
     },
     {
         category: "Recipes",
-        lists: [{
+        lists: [
+            {
+                id: "1",
+                title: "Childhood Recipes",
+                category: "Recipes",
+                date_created: "December 3, 2021",
+                image_URL: "https://list-it.s3.amazonaws.com/lily-banse--YHSwy6uqvk-unsplash.jpg",
+                isPinned: true,
+                isPublic: false,
+                entries: [
+                    {
+                        id: "1",
+                        title: "My Mom's Chicken Soup",
+                        location: "123 Riverside Dr",
+                        notes: "blah blah blah this is a lot of text to test the description box blah blah blah blah blah blah this is a lot of text to test the description box blah blah blah blah blah blah this is a lot of text to test the description box blah blah blah",
+                        date_created: "December 3, 2021",
+                        reaction: "",
+                        rate: 5,
+                        isPinned: true,
+                        photos: ["https://www.ambitiouskitchen.com/wp-content/uploads/2018/02/chickensoup-2.jpg","https://list-it.s3.amazonaws.com/lily-banse--YHSwy6uqvk-unsplash.jpg","https://list-it.s3.amazonaws.com/lily-banse--YHSwy6uqvk-unsplash.jpg","https://www.ambitiouskitchen.com/wp-content/uploads/2018/02/chickensoup-2.jpg","https://list-it.s3.amazonaws.com/lily-banse--YHSwy6uqvk-unsplash.jpg","https://list-it.s3.amazonaws.com/lily-banse--YHSwy6uqvk-unsplash.jpg"],
+                        link: "https://www.ambitiouskitchen.com/the-best-chicken-soup-recipe/"
+                    },
+                    {
+                        id: "2",
+                        title: "Another Chipotle",
+                        location: "123 Riverside Dr",
+                        notes: "blah blah blah",
+                        date_created: "December 3, 2021",
+                        reaction: "sad",
+                        isPinned: true
+                    },
+                    {
+                        id: "1",
+                        title: "Chipotle",
+                        location: "123 Riverside Dr",
+                        notes: "blah blah blah",
+                        date_created: "December 3, 2021",
+                        reaction: "happy",
+                        isPinned: false
+                    },
+                    {
+                        id: "2",
+                        title: "Another Chipotle",
+                        location: "123 Riverside Dr",
+                        notes: "blah blah blah",
+                        date_created: "December 3, 2021",
+                        reaction: "sad",
+                        isPinned: false
+                    },
+                    {
+                        id: "1",
+                        title: "Chipotle",
+                        location: "123 Riverside Dr",
+                        notes: "blah blah blah",
+                        date_created: "December 3, 2021",
+                        reaction: "happy",
+                        isPinned: false
+                    },
+                    {
+                        id: "2",
+                        title: "Another Chipotle",
+                        location: "123 Riverside Dr",
+                        notes: "blah blah blah",
+                        date_created: "December 3, 2021",
+                        reaction: "sad",
+                        isPinned: false
+                    }
+                ]
+            },
+            {
             id: "3",
             creator: "Sagarika",
             title: "List #3",
