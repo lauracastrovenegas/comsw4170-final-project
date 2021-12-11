@@ -13,18 +13,19 @@ const Wrapper = styled.div`
     width: fit-content;
 `;
 const Text = styled.div`
-    color: ${(props) => props.theme.colors.fullWhite};
+    color: ${(props) => props.color};
     font-weight: 700;
 `;
 
 export const CategoryTag = ({
     text,
-    color
+    color,
+    textColor
 }) => {
 
     return (
         <Wrapper color={color}>
-            <Text>{text}</Text>
+            <Text color={textColor ? textColor : "#ffffff"}>{text}</Text>
         </Wrapper>
     );
 }

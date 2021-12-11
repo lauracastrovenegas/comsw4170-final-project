@@ -12,7 +12,6 @@ const Wrapper = styled.div`
     position: absolute;
     bottom: 0;
     z-index: 1;
-    height: fit-content;
     width: 100vw;
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.2);
