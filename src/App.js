@@ -8,6 +8,7 @@ import ListPage from './containers/list';
 import EntryPage from './containers/entryDetail';
 import EntryFormPage from './containers/entryForm';
 import ListFormPage from './containers/listForm';
+import DiscoverListPage from './containers/discoverList';
 import HomePage from './containers/home';
 import { NavBar } from './components/navbar';
 
@@ -17,6 +18,7 @@ const App = () => {
       <Router>
         <Routes>
             <Route path='/' element={<DiscoverPage/>} />
+            <Route path='/discover/:catid/:listid' element={<DiscoverListPage/>} />
             <Route path='/home/' element={<HomePage/>} />
             <Route path='/my-lists' element={<MyLists/>} />
             <Route path='/list/:id' element={<ListPage/>} />

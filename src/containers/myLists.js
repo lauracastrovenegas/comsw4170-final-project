@@ -3,13 +3,11 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useState, useEffect } from 'react';
-import SearchBar from '../components/searchBar';
 import { ListCard } from '../components/listCard';
 import { myLists } from '../data/myLists';
 import { AddButton } from '../components/addFloatButton';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserCircle } from '@fortawesome/free-regular-svg-icons';
-import { SortIcon } from '../components/sortIcon';
 import SearchFilterBox from '../components/searchFilterBox';
 
 
@@ -75,7 +73,7 @@ const MyLists = () => {
         <Title>ListIt!</Title>
         <ProfileIcon><FontAwesomeIcon icon={faUserCircle}/></ProfileIcon>
       </Header>
-      <SearchFilterBox barText={searchBarText} setBarText={updateSearch} placeholder="Lists, Categories ..." margin="0.7"/>
+      <SearchFilterBox barText={searchBarText} setBarText={updateSearch} placeholder="Search Your Lists..." margin="0.7"/>
       <ListCards>
         {myLists.map(list => (
               <CardWrapper key={list.id}>

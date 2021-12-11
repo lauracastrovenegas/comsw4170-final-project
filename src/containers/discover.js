@@ -4,27 +4,41 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useState, useEffect } from 'react';
-import SearchBar from '../components/searchBar';
+import SearchFilterBox from '../components/searchFilterBox';
 import { discover_lists } from '../data/discover_lists';
 import { CategoryCarousel } from '../components/categoryCarousel';
 
 const PageWrapper = styled.div`
-  padding: 1rem 1rem 4.5rem 1rem;
+  padding: 1rem;
 `;
 
-const CarouselWrapper = styled.div`
-  
-`;
-
-const Categories = styled.div`
-  
+const Header = styled.div`
+  display: flex;
 `;
 
 const Title = styled.div`
   font-size: 2rem;
-  margin: 1rem;
+  margin: 0.5rem 1rem;
+  font-weight: 700;
+  color: ${(props) => props.theme.colors.yellow};
 `;
 
+const CarouselWrapper = styled.div`
+  margin: 0.5rem 0rem;
+`;
+
+const Categories = styled.div`
+  margin: 0rem auto;
+  padding-bottom: 2.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  overflow: scroll;
+  max-height: 71vh;
+  ::-webkit-scrollbar {
+    width: 0; 
+    background: transparent;
+  }
+`;
 
 const DiscoverPage = () => {
   const [searchBarText, setSearchBarText] = useState('');
@@ -35,12 +49,13 @@ const DiscoverPage = () => {
 
   return (
       <PageWrapper>
-        <Title>Discover</Title>
-          <SearchBar barText={searchBarText} setBarText={updateSearch} placeholder="Lists, Categories ..."/>
+        <Title>ListIt!</Title>
+          <SearchFilterBox barText={searchBarText} setBarText={updateSearch} placeholder="Search..." margin="1"/>
           <Categories>
             {discover_lists ? discover_lists.map(item => (
                   <CarouselWrapper key={item.category}>
                       <CategoryCarousel 
+                          catid={item.id}
                           category={item.category}
                           lists={item.lists}
                       />

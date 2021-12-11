@@ -1,5 +1,6 @@
 export const discover_lists = [
     {
+        id: "1",
         category: "Restaurants",
         lists: [{
             id: "1",
@@ -44,6 +45,7 @@ export const discover_lists = [
         }]
     },
     {
+        id: "2",
         category: "Books",
         lists: [{
             id: "2",
@@ -162,6 +164,7 @@ export const discover_lists = [
         }]
     },
     {
+        id: "3",
         category: "Recipes",
         lists: [
             {

@@ -10,7 +10,6 @@ const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
     background-color: ${(props) => props.theme.colors.fullWhite};
-    margin: 1rem;
 `;
 
 const Title = styled.div`
@@ -19,19 +18,20 @@ const Title = styled.div`
 
 const ListCards = styled.div`
     display: flex;
-    width: 100%;
+    width: 90vw;
     overflow: scroll;
 `;
 
 const CardWrapper = styled.div`
-    min-width: 10rem;
-    max-width: 10rem;
+    min-width: 9rem;
+    max-width: 9rem;
     margin: 0.5rem 0.25rem;
 `;
 
 export const CategoryCarousel = ({
     category, // name of category (could be an object with more info)
-    lists // array of lists
+    lists, // array of lists
+    catid // id of the category
 }) => {
     return (
             <Wrapper>
@@ -45,7 +45,9 @@ export const CategoryCarousel = ({
                                 date_created={list.date_created}
                                 category={list.category}
                                 isPinned={false}
-                                currentRoute="Discover"
+                                prevRoute="Discover"
+                                imageURL={list.image_URL}
+                                catid={catid}
                             />
                         </CardWrapper>
                     ))}

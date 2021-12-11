@@ -46,9 +46,9 @@ const IconWrapper = styled.div`
   width: fit-content;
 `;
 
-export const ListCard = ({id, category, title, date_created, isPinned, imageURL, isPublic}) => {
+export const ListCard = ({id, catid, category, title, date_created, isPinned, imageURL, isPublic, prevRoute}) => {
     return (
-        <CardWrapper href={`/list/${id}`}>
+        <CardWrapper href={(prevRoute === 'Discover')? `/discover/${catid}/${id}`:`/list/${id}`}>
             <Card>
                 <img src={imageURL}></img>
                 {isPublic ? <IconWrapper><PublicIcon/></IconWrapper> : null }
