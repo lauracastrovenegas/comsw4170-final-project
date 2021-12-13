@@ -47,6 +47,7 @@ const Category = styled.div`
 
 const SortOptions = styled.div`
     border-bottom: 0.5px solid ${(props) => props.theme.colors.lightGray};
+    width: 92vw;
 `;
 
 const SortOption = styled.div`
@@ -73,7 +74,8 @@ export const FilterPopUp = ({
                 // ( function defined in parent component, passed here 
                 // and called once aubmit button clicked to update parent container)
     isOpen,
-    closePopup
+    closePopup,
+    showCategories
 }) => {
     return (
         <div>
@@ -81,15 +83,16 @@ export const FilterPopUp = ({
                 <Wrapper>
                 <Content>
                     <FontAwesomeIcon onClick={() => closePopup()}icon={faTimes}/>
-                    <Title>Filter</Title>
-                    <Heading>Categories</Heading>
-                    <Categories>
-                        {categories.map(category => (
-                            <Category>
-                                <CategoryTag text={category.name} color={category.color}/>
-                            </Category>
-                        ))}
-                    </Categories>
+                    {showCategories ? 
+                        <><Title>Filter</Title>
+                        <Heading>Categories</Heading>
+                        <Categories>
+                            {categories.map(category => (
+                                <Category>
+                                    <CategoryTag text={category.name} color={category.color}/>
+                                </Category>
+                            ))}
+                        </Categories></>: null}
                     <Heading>Sort By</Heading>
                     <SortOptions>
                         {sort_by.map(option => (

@@ -103,7 +103,7 @@ const MyLists = () => {
       </ListCards>
       <AddButtonWrapper><AddButton route="/list-form/"/></AddButtonWrapper>
       </Content>
-      <FilterPopUp closePopup={toggleFilters} isOpen={isOpen}/>
+      <FilterPopUp showCategories={true} closePopup={toggleFilters} isOpen={isOpen}/>
     </PageWrapper>
   );
 }

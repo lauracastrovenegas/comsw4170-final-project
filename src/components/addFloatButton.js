@@ -3,7 +3,7 @@
 import React, { useEffect } from "react";
 import styled from "styled-components/macro";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEdit } from '@fortawesome/free-regular-svg-icons'
+import { faPlus } from '@fortawesome/free-solid-svg-icons'
 
 const IconWrapper = styled.div`
     a {
@@ -32,7 +32,7 @@ export const AddButton = ({
     return (
         <IconWrapper>
             <a href={route}>
-                <Icon><FontAwesomeIcon icon={faEdit}/></Icon>
+                <Icon><FontAwesomeIcon icon={faPlus}/></Icon>
             </a>
         </IconWrapper>
     );

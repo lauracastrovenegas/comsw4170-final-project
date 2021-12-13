@@ -11,8 +11,13 @@ import { BackButton } from '../components/backBtn';
 import { AddButton } from '../components/addFloatButton';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
+import { FilterPopUp } from '../components/filterPopup';
 
 const PageWrapper = styled.div`
+  
+`;
+
+const Content = styled.div`
   background-color: ${(props) => props.theme.colors.fullWhite};
   display: flex;
   flex-direction: column;
@@ -104,10 +109,15 @@ const ListPage = ({
   const { id } = useParams();
   const [searchBarText, setSearchBarText] = useState('');
   const [list, setList] = useState({});
+  const [isOpen, setOpen] = useState(false);
 
   useEffect(() => {
     setList(fetchList(id))
   }, []);
+
+  const toggleFilters = () => {
+    setOpen(!isOpen)
+  }
 
   const fetchList = (id) => {
     return myLists.find((element) => {
@@ -121,6 +131,7 @@ const ListPage = ({
 
   return (
       <PageWrapper>
+        <Content>
         <BackButtonBox>
           <BackButton text="My Lists" route={`/my-lists/`} textColor="white"/>
         </BackButtonBox>
@@ -129,7 +140,7 @@ const ListPage = ({
           <Title>{list.title}</Title>
         </TopContainer>
         <ContentContainer>
-          <SearchFilterBox barText={searchBarText} setBarText={updateSearch} placeholder="Search List..." margin="1.3"/>
+          <SearchFilterBox toggleFilter={toggleFilters} barText={searchBarText} setBarText={updateSearch} placeholder="Search List..." margin="1.3"/>
           <EntryCards>
             {list.entries ? list.entries.map(entry => (
                   <CardWrapper key={list.id}>
@@ -148,6 +159,8 @@ const ListPage = ({
           </EntryCards>
           <AddButtonWrapper><AddButton route="/entry-form/"/></AddButtonWrapper>
         </ContentContainer>
+        </Content>
+        <FilterPopUp showCategories={false} closePopup={toggleFilters} isOpen={isOpen}/>
       </PageWrapper>
   );
 }

@@ -75,7 +75,7 @@ const DiscoverPage = () => {
               )): null}
           </Categories>
           </Content>
-          <FilterPopUp closePopup={toggleFilters} isOpen={isOpen}/>
+          <FilterPopUp showCategories={true} closePopup={toggleFilters} isOpen={isOpen}/>
       </PageWrapper>
   );
 }
