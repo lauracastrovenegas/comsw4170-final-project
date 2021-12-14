@@ -75,7 +75,8 @@ export const FilterPopUp = ({
                 // and called once aubmit button clicked to update parent container)
     isOpen,
     closePopup,
-    showCategories
+    showCategories,
+    inList
 }) => {
     return (
         <div>
@@ -98,6 +99,7 @@ export const FilterPopUp = ({
                         {sort_by.map(option => (
                             <SortOption>{option}</SortOption>
                         ))}
+                        {inList ? <><SortOption>Best Rated</SortOption><SortOption>Worst Rated</SortOption></>: null}
                     </SortOptions>
                 </Content>
             </Wrapper> : null}

@@ -161,7 +161,7 @@ const ListPage = ({
           <AddButtonWrapper><AddButton route="/entry-form/"/></AddButtonWrapper>
         </ContentContainer>
         </Content>
-        <FilterPopUp showCategories={false} closePopup={toggleFilters} isOpen={isOpen}/>
+        <FilterPopUp showCategories={false} closePopup={toggleFilters} isOpen={isOpen} inList={true}/>
       </PageWrapper>
   );
 }
