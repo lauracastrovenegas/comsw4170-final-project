@@ -153,6 +153,7 @@ const ListPage = ({
                           date_created={entry.date_created}
                           reaction={entry.reaction}
                           isPinned={entry.isPinned}
+                          rating={entry.rate}
                       />
                   </CardWrapper>
               )): null}

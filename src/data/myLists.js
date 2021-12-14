@@ -68,6 +68,69 @@ export const myLists = [
         ]
     },
     {
+        id: "7",
+        title: "Movies with the LOML",
+        category: "Movies",
+        date_created: "December 3, 2021",
+        image_URL: "https://list-it.s3.amazonaws.com/Villeneuve-Dune-courtesy-of-TV-Insider.jpeg",
+        isPinned: false,
+        isPublic: false,
+        entries: [
+            {
+                id: "1",
+                title: "Interstellar",
+                notes: "blah blah blah",
+                date_created: "December 3, 2021",
+                reaction: "happy",
+                isPinned: true,
+                rate: 4
+            },
+            {
+                id: "2",
+                title: "Little Women",
+                notes: "blah blah blah",
+                date_created: "December 3, 2021",
+                reaction: "sad",
+                isPinned: true,
+                rate: 3
+            },
+            {
+                id: "3",
+                title: "Wonka",
+                notes: "blah blah blah",
+                date_created: "December 3, 2021",
+                reaction: "happy",
+                isPinned: true
+            },
+            {
+                id: "4",
+                title: "Lady Bird",
+                location: "123 Riverside Dr",
+                notes: "blah blah blah",
+                date_created: "December 3, 2021",
+                reaction: "sad",
+                isPinned: true,
+                rate: 4
+            },
+            {
+                id: "5",
+                title: "The French Dispatch",
+                location: "123 Riverside Dr",
+                notes: "blah blah blah",
+                date_created: "December 3, 2021",
+                reaction: "happy",
+                isPinned: false,
+                rate: 4
+            },
+            {
+                id: "6",
+                title: "Dune",
+                date_created: "December 3, 2021",
+                isPinned: false,
+            }
+        ]
+    },
+    {
         id: "2",
         title: "Books for Subway Rides",
         category: "Books",
@@ -233,71 +296,6 @@ export const myLists = [
             {
                 id: "2",
                 title: "Another Cake",
-                notes: "blah blah blah",
-                date_created: "December 3, 2021",
-                reaction: "sad",
-                isPinned: false
-            }
-        ]
-    },
-    {
-        id: "7",
-        title: "Movies with the LOML",
-        category: "Movies",
-        date_created: "December 3, 2021",
-        image_URL: "https://list-it.s3.amazonaws.com/Villeneuve-Dune-courtesy-of-TV-Insider.jpeg",
-        isPinned: false,
-        isPublic: false,
-        entries: [
-            {
-                id: "1",
-                title: "Chipotle",
-                location: "123 Riverside Dr",
-                notes: "blah blah blah",
-                date_created: "December 3, 2021",
-                reaction: "happy",
-                isPinned: true
-            },
-            {
-                id: "2",
-                title: "Another Chipotle",
-                location: "123 Riverside Dr",
-                notes: "blah blah blah",
-                date_created: "December 3, 2021",
-                reaction: "sad",
-                isPinned: true
-            },
-            {
-                id: "1",
-                title: "Chipotle",
-                location: "123 Riverside Dr",
-                notes: "blah blah blah",
-                date_created: "December 3, 2021",
-                reaction: "happy",
-                isPinned: true
-            },
-            {
-                id: "2",
-                title: "Another Chipotle",
-                location: "123 Riverside Dr",
-                notes: "blah blah blah",
-                date_created: "December 3, 2021",
-                reaction: "sad",
-                isPinned: true
-            },
-            {
-                id: "1",
-                title: "Chipotle",
-                location: "123 Riverside Dr",
-                notes: "blah blah blah",
-                date_created: "December 3, 2021",
-                reaction: "happy",
-                isPinned: false
-            },
-            {
-                id: "2",
-                title: "Another Chipotle",
-                location: "123 Riverside Dr",
                 notes: "blah blah blah",
                 date_created: "December 3, 2021",
                 reaction: "sad",

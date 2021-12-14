@@ -26,18 +26,19 @@ const Title = styled.div`
     display: block;
     text-overflow: ellipsis;
     font-size: 1.2rem;
+    margin-right: 1rem;
 `;
 
 const RateWrapper = styled.div`
     margin-left: auto;
 `;
 
-export const EntryCard = ({listid, id, title, location, notes, date_created, reaction, isPinned}) => {
+export const EntryCard = ({listid, id, title, location, notes, date_created, reaction, isPinned, rating}) => {
     return (
         <Card href={`/list/${listid}/${id}`}>
             <CardWrapper>
                 <Title>{title}</Title>
-                <RateWrapper><RateComponent rate={2}/></RateWrapper>
+                {rating ? <RateWrapper><RateComponent rate={rating}/></RateWrapper>:null}
             </CardWrapper>
         </Card>
     );
