@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components/macro";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faLink } from '@fortawesome/free-solid-svg-icons'
+import { faChevronRight, faLink } from '@fortawesome/free-solid-svg-icons'
 import axios from 'axios';
 
 const Wrapper = styled.a`
@@ -70,9 +70,42 @@ const Icon = styled.div`
     margin: auto 0.2rem auto 0rem;
 `;
 
+const InputWrapper = styled.div`
+    text-decoration: none;
+    color: ${(props) => props.theme.colors.gray};
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+`;
+
+const InputField = styled.input`
+    width: 70%;
+    border-radius: 30px;
+    padding: 0.5rem 1rem;
+    border: 0.5px solid ${(props) => props.theme.colors.gray};
+    font-size: 1rem;
+    z-index: 1;
+`;
+
+const SubmitIcon = styled.div`
+    margin-left: -1rem;
+    border-radius: 0px 30px 30px 0px;
+    padding: 0.5rem;
+    width: fit-content;
+    background-color: ${(props) => props.theme.colors.lightGray};
+    border: 0.5px solid ${(props) => props.theme.colors.gray};
+    svg {
+        color: ${(props) => props.theme.colors.gray};
+        font-size: 1rem;
+        margin: auto 0.3rem auto 1rem;
+    }
+`;
+
 export const LinkPreview = ({
     url
 }) => {
+    const [linkURL, setLinkURL] = useState(url)
+    const [inputText, setInputText] = useState('');
     const [imageURL, setImageURL] = useState("");
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
@@ -80,8 +113,19 @@ export const LinkPreview = ({
     const key = "e109c1dcf4278763037690080b29af44";
 
     useEffect(() => {
-        getLinkInfo(url)
-    }, []);
+        if (linkURL !== ""){
+            getLinkInfo(linkURL)
+        }
+        console.log(linkURL)
+    }, [linkURL]);
+
+    const updateInput = async (input) => {
+        setInputText(input);
+    };
+
+    const submitInput = (input) => {
+        setLinkURL(input);
+    };
 
     const getLinkInfo = async (url) => {
         axios("http://api.linkpreview.net/?key=" + key + "&q=" + url)
@@ -103,18 +147,27 @@ export const LinkPreview = ({
         setDescription(data.description)
     }
 
-    return (
-        <Wrapper href={url}>
-            {isLoading ? null :
-            <Box>
-                <Image><img src={imageURL}></img></Image>
-                <Content>
-                    <Title>{title}</Title>
-                    <Description>{description}</Description>
-                    <Url><Icon><FontAwesomeIcon icon={faLink}/></Icon><Text>{url}</Text></Url>
-                </Content>
-            </Box> 
-            }
-        </Wrapper>
-    );
+    if (linkURL === "") {
+        return (
+            <InputWrapper>
+                <InputField value={inputText} onChange={(e) => updateInput(e.target.value)} type="text" placeholder="Add a Link..."/>
+                <SubmitIcon onClick={() => submitInput(inputText)}><FontAwesomeIcon icon={faChevronRight}/></SubmitIcon>
+            </InputWrapper>
+        )
+    } else {
+        return (
+            <Wrapper href={linkURL}>
+                {isLoading ? null :
+                <Box>
+                    <Image><img src={imageURL}></img></Image>
+                    <Content>
+                        <Title>{title}</Title>
+                        <Description>{description}</Description>
+                        <Url><Icon><FontAwesomeIcon icon={faLink}/></Icon><Text>{linkURL}</Text></Url>
+                    </Content>
+                </Box> 
+                }
+            </Wrapper>
+        )
+    }
 }

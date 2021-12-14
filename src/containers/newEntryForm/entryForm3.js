@@ -119,8 +119,8 @@ const SubHeading = styled.div`
   color: ${(props) => props.theme.colors.gray};
 `;
 
-const ListFormPage3 = ({
-  prop1// add necessary attributes here
+const EntryFormPage3 = ({
+  imageLink// add necessary attributes here
 }) => {
   const [switchState, setSwitch] = useState(false)
   const [addCollab, setAddCollab] = useState(false);
@@ -131,10 +131,10 @@ const ListFormPage3 = ({
   };
 
   return (
-  <PageWrapper>
+  <PageWrapper imageurl={imageLink ? imageLink : "https://list-it.s3.amazonaws.com/Rectangle+39.png"}>
     <BottomCard>
       <Title>Museums in NYC</Title>
-      <CloseIcon><FontAwesomeIcon onClick={() => navigate("/my-lists/")}icon={faTimes}/></CloseIcon>
+      <CloseIcon><FontAwesomeIcon onClick={() => navigate(-3)} icon={faTimes}/></CloseIcon>
       <Content>
         <Heading>Make This List Public</Heading>
         <SubHeading>Your list is currently private. Only you and your collaborators can view it.</SubHeading>
@@ -149,14 +149,14 @@ const ListFormPage3 = ({
         </Row>}
         <Heading>Add Collaborators</Heading>
         <Collaborators>
-          {addCollab ? <CollaboratorIcon imageURL="https://list-it.s3.amazonaws.com/lily-banse--YHSwy6uqvk-unsplash.jpg" onClick={() => setAddCollab(false)}/>: null}
+          {addCollab ? <CollaboratorIcon imageURL="https://list-it.s3.amazonaws.com/lily-banse--YHSwy6uqvk-unsplash.jpg" onClick={() => setAddCollab(!addCollab)}/>: null}
           <AddIcon onClick={() => setAddCollab(true)}><FontAwesomeIcon icon={faPlus}/></AddIcon>
         </Collaborators>
       </Content>
-      <ButtonActive><a href="/my-lists/"><CategoryTag text="ListIt!" color="#FFBE0C"/></a></ButtonActive>
+      <ButtonActive onClick={() => navigate(-3)} ><CategoryTag text="ListIt!" color="#FFBE0C"/></ButtonActive>
     </BottomCard>
   </PageWrapper>
   );
 }
 
-export default ListFormPage3;
+export default EntryFormPage3;

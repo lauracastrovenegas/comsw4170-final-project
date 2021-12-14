@@ -4,6 +4,7 @@ import React from 'react';
 import { useParams } from 'react-router';
 import styled from 'styled-components';
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import SearchFilterBox from '../components/searchFilterBox';
 import { myLists } from '../data/myLists';
 import { EntryCard } from '../components/entryCard';
@@ -103,8 +104,9 @@ const AddButtonWrapper = styled.div`
 const ListPage = ({
   title, // title of specific list
   category, // category of list
-  entries // array of entries in list
-  // add more props as needed
+  entries, // array of entries in list
+  setListImage,
+  setPrev
 }) => {
   const { id } = useParams();
   const [searchBarText, setSearchBarText] = useState('');
@@ -113,16 +115,21 @@ const ListPage = ({
 
   useEffect(() => {
     setList(fetchList(id))
-  }, []);
+  },[]);
 
   const toggleFilters = () => {
     setOpen(!isOpen)
   }
 
   const fetchList = (id) => {
-    return myLists.find((element) => {
+    const list = myLists.find((element) => {
       return element.id === id;
     })
+
+    setListImage(list.image_URL)
+    setPrev(list.title)
+
+    return list;
   };
 
   const updateSearch = async (input) => {
@@ -158,7 +165,7 @@ const ListPage = ({
                   </CardWrapper>
               )): null}
           </EntryCards>
-          <AddButtonWrapper><AddButton route="/entry-form/"/></AddButtonWrapper>
+          <AddButtonWrapper><Link to={`/entry-form/`}><AddButton/></Link></AddButtonWrapper>
         </ContentContainer>
         </Content>
         <FilterPopUp showCategories={false} closePopup={toggleFilters} isOpen={isOpen} inList={true}/>

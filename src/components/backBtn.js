@@ -27,14 +27,22 @@ const Text = styled.div`
 export const BackButton = ({
     text, // text of button
     textColor,
-    route // route
+    route, // route
+    isSpecial
 }) => {
     const navigate = useNavigate();
 
     return (
-        <Wrapper onClick={() => navigate(-1)} textColor={textColor}>
+        <>
+        {isSpecial ? 
+            <Wrapper textColor={textColor}>
             <Icon><FontAwesomeIcon icon={faChevronLeft}/></Icon>
             <Text>{text}</Text>
-        </Wrapper>
+            </Wrapper>
+        :   <Wrapper onClick={() => navigate(-1)} textColor={textColor}>
+            <Icon><FontAwesomeIcon icon={faChevronLeft}/></Icon>
+            <Text>{text}</Text>
+            </Wrapper>}
+        </>
     );
 }

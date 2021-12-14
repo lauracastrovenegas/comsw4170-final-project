@@ -75,6 +75,7 @@ const ButtonActive = styled.div`
   border-radius: 30px;
   margin: 0rem 1rem 1rem auto;
   font-size: 1.2rem;
+  border: 0.5px solid ${(props) => props.theme.colors.fullWhite};
 `;
 
 const Button = styled.div`

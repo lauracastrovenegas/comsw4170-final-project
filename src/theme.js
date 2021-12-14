@@ -11,7 +11,8 @@ const theme = {
     checkboxGray: '#696969',
     fullWhite: '#ffffff',
     opaqueWhite: "rgba(255, 255, 255, 0.72)",
-    yellow: "#FFBE0C"
+    yellow: "#FFBE0C",
+    purple: "#5451F6"
   },
 };
 
