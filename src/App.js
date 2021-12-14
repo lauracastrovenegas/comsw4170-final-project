@@ -20,6 +20,7 @@ import { NavBar } from './components/navbar';
 const App = () => {
   const [listImage, setListImage] = useState("")
   const [previousPage, setPreviousPage] = useState("")
+  const [showNav, setShowNav] = useState(true)
 
   return (
     <ThemeProvider theme={theme}>
@@ -30,7 +31,7 @@ const App = () => {
             <Route path='/home/' element={<HomePage/>} />
             <Route path='/my-lists' element={<MyLists/>} />
             <Route path='/list/:id' element={<ListPage setPrev={setPreviousPage} setListImage={setListImage}/>} />
-            <Route path='/list/:listid/:entryid' element={<EntryPage/>} />
+            <Route path='/list/:listid/:entryid' element={<EntryPage showNav={setShowNav}/>} />
             <Route path='/list-form/' element={<ListFormPage1 prop1={1}/>} />
             <Route path='/list-form/1' element={<ListFormPage2/>} />
             <Route path='/list-form/2' element={<ListFormPage3/>} />
@@ -39,7 +40,7 @@ const App = () => {
             <Route path='/entry-form/2' element={<EntryFormPage3 imageLink={listImage}/>} />
         </Routes>
       </Router>
-      <NavBar/>
+      {showNav ? <NavBar/> : null}
     </ThemeProvider>
   );
 }

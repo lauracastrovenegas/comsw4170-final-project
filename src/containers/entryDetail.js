@@ -114,7 +114,7 @@ const Section = styled.div`
   margin: 1rem 1.5rem;
 `
 
-const EntryPage = ({}) => {
+const EntryPage = ({showNav}) => {
   const { listid, entryid } = useParams();
   const [searchBarText, setSearchBarText] = useState('');
   const [entry, setEntry] = useState({});
@@ -123,6 +123,7 @@ const EntryPage = ({}) => {
   useEffect(() => {
     setList(fetchList(listid))
     setEntry(fetchEntry(listid, entryid))
+    showNav(false)
   }, []);
 
   const fetchList = (listid) => {
@@ -144,7 +145,7 @@ const EntryPage = ({}) => {
   return (
       <PageWrapper>
         <BackButtonBox>
-           <BackButton text={list.title} route={`/list/${listid}`} textColor="white"/>
+           <BackButton onClick={() => showNav(true)} text={list.title} route={`/list/${listid}`} textColor="white"/>
         </BackButtonBox>
         <OptionsButton><FontAwesomeIcon icon={faEllipsisV}/></OptionsButton>
         <TopContainer imageurl={entry.photos ? entry.photos[0] : list.image_URL}/>
