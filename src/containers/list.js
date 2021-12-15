@@ -11,7 +11,7 @@ import { EntryCard } from '../components/entryCard';
 import { BackButton } from '../components/backBtn';
 import { AddButton } from '../components/addFloatButton';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
+import { faEllipsisV, faShareAlt } from '@fortawesome/free-solid-svg-icons';
 import { FilterPopUp } from '../components/filterPopup';
 
 const PageWrapper = styled.div`
@@ -71,10 +71,6 @@ const EntryCards = styled.div`
   border-radius: 15px;
   overflow: scroll;
   max-height: 45vh;
-  ::-webkit-scrollbar {
-    width: 0;  /* Remove scrollbar space */
-    background: transparent;  /* Optional: just make scrollbar invisible */
-  }
 `;
 
 const CardWrapper = styled.div`
@@ -82,15 +78,13 @@ const CardWrapper = styled.div`
 `;
 
 const Title = styled.div`
-  padding: 1rem;
-  font-size: 2rem;
-  margin-top: 22vh;
-  color: ${(props) => props.theme.colors.fullWhite};
   font-weight: 600;
+  font-size: 2rem;
   white-space: nowrap;
-    overflow: hidden;
-    display: block;
-    text-overflow: ellipsis;
+  overflow: hidden;
+  display: block;
+  text-overflow: ellipsis;
+  width: fit-content;
   text-shadow: 0.5px 0.5px ${(props) => props.theme.colors.gray};
 `;
 
@@ -99,6 +93,21 @@ const AddButtonWrapper = styled.div`
   position: absolute; 
   bottom: 5.5rem; 
   right: 0rem;
+`;
+
+const ShareIcon = styled.div`
+  margin: 0.6rem 0rem auto auto;
+  svg {
+    padding: 0.2rem;
+  }
+`;
+
+const Header = styled.div`
+  display: flex;
+  padding: 1rem;
+  margin-top: -5rem;
+  margin-bottom: 1rem;
+  color: ${(props) => props.theme.colors.fullWhite};
 `;
 
 const ListPage = ({
@@ -143,10 +152,12 @@ const ListPage = ({
           <BackButton text="My Lists" route={`/my-lists/`} textColor="white"/>
         </BackButtonBox>
         <OptionsButton><FontAwesomeIcon icon={faEllipsisV}/></OptionsButton>
-        <TopContainer imageurl={list.image_URL}>
-          <Title>{list.title}</Title>
-        </TopContainer>
+        <TopContainer imageurl={list.image_URL}/>
         <ContentContainer>
+          <Header>
+            <Title>{list.title}</Title>
+            <ShareIcon><FontAwesomeIcon icon={faShareAlt}/></ShareIcon>
+          </Header>
           <SearchFilterBox toggleFilter={toggleFilters} barText={searchBarText} setBarText={updateSearch} placeholder="Search List..." margin="1.3"/>
           <EntryCards>
             {list.entries ? list.entries.map(entry => (
