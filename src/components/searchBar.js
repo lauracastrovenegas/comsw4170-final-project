@@ -8,7 +8,7 @@ const SearchBox = styled.div`
 `;
 
 const Bar = styled.input`
-  min-width: 60vw;
+  min-width: ${props => props.width}vw;
   padding-left: 3rem;
   border-radius: 15px;
   height: 39px;
@@ -33,7 +33,8 @@ const Icon = styled.i`
 const SearchBar = ({
   barText,
   setBarText,
-  placeholder
+  placeholder,
+  width
 }) => {
     return (
         <SearchBox>
@@ -43,6 +44,7 @@ const SearchBar = ({
             placeholder={placeholder}
             value={barText}
             onChange={(e) => setBarText(e.target.value)}
+            width={width}
           ></Bar>
         </SearchBox>
     )
