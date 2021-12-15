@@ -4,6 +4,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { useState, useEffect } from 'react';
 import { ListCard } from '../components/listCard';
+import { ListCardSimple } from '../components/listCardListView';
 import { myLists } from '../data/myLists';
 import { AddButton } from '../components/addFloatButton';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -39,7 +40,7 @@ const ProfileIcon = styled.div`
   }
 `;
 
-const ListCards = styled.div`
+const ListCardsGrid = styled.div`
   margin: 0rem auto;
   padding-bottom: 2.5rem;
   display: flex;
@@ -52,10 +53,24 @@ const ListCards = styled.div`
   }
 `;
 
-const CardWrapper = styled.div`
+const ListCardsList = styled.div`
+  margin: 0.5rem;
+  border-width: 1px 2px 2px 2px;
+  border-style: solid;
+  border-color: ${(props) => props.theme.colors.lightGray};
+  border-radius: 15px;
+  overflow: scroll;
+  max-height: 70vh;
+`;
+
+const CardWrapperGrid = styled.div`
   flex-grow: 1;
   max-width: 45%;
   margin: 0.5rem;
+`;
+
+const CardWrapperList = styled.div`
+
 `;
 
 const AddButtonWrapper = styled.div`
@@ -68,6 +83,7 @@ const AddButtonWrapper = styled.div`
 const MyLists = () => {
   const [searchBarText, setSearchBarText] = useState('');
   const [isOpen, setOpen] = useState(false);
+  const [currView, setCurView] = useState("grid");
 
   const updateSearch = async (input) => {
     setSearchBarText(input);
@@ -77,6 +93,10 @@ const MyLists = () => {
     setOpen(!isOpen)
   }
 
+  const toggleView = (view) => {
+    setCurView(view)
+  }
+
   return (
     <PageWrapper>
       <Content>
@@ -84,23 +104,41 @@ const MyLists = () => {
         <Title>ListIt!</Title>
         <ProfileIcon><FontAwesomeIcon icon={faUserCircle}/></ProfileIcon>
       </Header>
-      <SearchFilterBox toggleFilter={toggleFilters} barText={searchBarText} setBarText={updateSearch} placeholder="Search Your Lists..." margin="0.7"/>
-      <ListCards>
-        {myLists.map(list => (
-              <CardWrapper key={list.id}>
-                  <ListCard 
-                      id={list.id}
-                      title={list.title}
-                      date_created={list.date_created}
-                      category={list.category}
-                      isPinned={list.isPinned}
-                      imageURL={list.image_URL}
-                      isPublic={list.isPublic}
-                      currentRoute="My Lists"
-                  />
-              </CardWrapper>
-          ))}
-      </ListCards>
+      <SearchFilterBox enableToggleView={true} toggleView={toggleView} toggleFilter={toggleFilters} barText={searchBarText} setBarText={updateSearch} placeholder="Search Your Lists..." margin="0.5"/>
+      {currView === "grid" ? 
+        <ListCardsGrid>
+          {myLists.map(list => (
+                <CardWrapperGrid key={list.id}>
+                    <ListCard 
+                        id={list.id}
+                        title={list.title}
+                        date_created={list.date_created}
+                        category={list.category}
+                        isPinned={list.isPinned}
+                        imageURL={list.image_URL}
+                        isPublic={list.isPublic}
+                        currentRoute="My Lists"
+                    />
+                </CardWrapperGrid>
+            ))}
+        </ListCardsGrid> 
+      : <ListCardsList>
+          {myLists.map(list => (
+                <CardWrapperList key={list.id}>
+                    <ListCardSimple 
+                        id={list.id}
+                        title={list.title}
+                        date_created={list.date_created}
+                        category={list.category}
+                        isPinned={list.isPinned}
+                        imageURL={list.image_URL}
+                        isPublic={list.isPublic}
+                        currentRoute="My Lists"
+                    />
+                </CardWrapperList>
+            ))}
+            <ListCardSimple blank={true}/>
+        </ListCardsList> }
       <AddButtonWrapper><AddButton route="/list-form/"/></AddButtonWrapper>
       </Content>
       <FilterPopUp showCategories={true} closePopup={toggleFilters} isOpen={isOpen}/>
