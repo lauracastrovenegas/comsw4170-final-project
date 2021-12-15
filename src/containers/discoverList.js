@@ -10,7 +10,8 @@ import { EntryCard } from '../components/entryCard';
 import { BackButton } from '../components/backBtn';
 import { AddButton } from '../components/addFloatButton';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
+import { faBookmark, faEllipsisV, faShareAlt } from '@fortawesome/free-solid-svg-icons';
+import { faBookmark as notSaved} from '@fortawesome/free-regular-svg-icons';
 
 const PageWrapper = styled.div`
   background-color: ${(props) => props.theme.colors.fullWhite};
@@ -76,23 +77,36 @@ const CardWrapper = styled.div`
 `;
 
 const Title = styled.div`
-  padding: 1rem;
-  font-size: 2rem;
-  margin-top: 22vh;
-  color: ${(props) => props.theme.colors.fullWhite};
   font-weight: 600;
+  font-size: 2rem;
   white-space: nowrap;
-    overflow: hidden;
-    display: block;
-    text-overflow: ellipsis;
+  overflow: hidden;
+  display: block;
+  text-overflow: ellipsis;
+  width: fit-content;
   text-shadow: 0.5px 0.5px ${(props) => props.theme.colors.gray};
 `;
 
-const AddButtonWrapper = styled.div`
-  z-index: 1; 
-  position: absolute; 
-  bottom: 5.5rem; 
-  right: 0rem;
+const ShareIcon = styled.div`
+  margin: 0.6rem 0rem auto auto;
+  svg {
+    padding: 0.2rem;
+  }
+`;
+
+const BookmarkIcon = styled.div`
+  margin: 0.6rem 0.5rem auto 1rem;
+  svg {
+    padding: 0.2rem 0rem;
+  }
+`;
+
+const Header = styled.div`
+  display: flex;
+  padding: 1rem;
+  margin-top: -5rem;
+  margin-bottom: 1rem;
+  color: ${(props) => props.theme.colors.fullWhite};
 `;
 
 const DiscoverListPage = ({
@@ -103,6 +117,7 @@ const DiscoverListPage = ({
 }) => {
   const { catid, listid } = useParams();
   const [searchBarText, setSearchBarText] = useState('');
+  const [isSaved, setSaved] = useState(false);
   const [list, setList] = useState({});
 
   useEffect(() => {
@@ -123,16 +138,23 @@ const DiscoverListPage = ({
     setSearchBarText(input);
   };
 
+  const toggleSave = () => {
+    setSaved(!isSaved);
+  };
+
   return (
       <PageWrapper>
         <BackButtonBox>
           <BackButton text="Discover" route={`/`} textColor="white"/>
         </BackButtonBox>
         <OptionsButton><FontAwesomeIcon icon={faEllipsisV}/></OptionsButton>
-        <TopContainer imageurl={list.image_URL}>
-          <Title>{list.title}</Title>
-        </TopContainer>
+        <TopContainer imageurl={list.image_URL}/>
         <ContentContainer>
+          <Header>
+            <Title>{list.title}</Title>
+            {isSaved ? <BookmarkIcon onClick={() => toggleSave()}><FontAwesomeIcon onClick={() => toggleSave()} icon={faBookmark}/></BookmarkIcon> : <BookmarkIcon onClick={() => toggleSave()}><FontAwesomeIcon icon={notSaved}/></BookmarkIcon>}
+            <ShareIcon><FontAwesomeIcon icon={faShareAlt}/></ShareIcon>
+          </Header>
           <SearchFilterBox barText={searchBarText} setBarText={updateSearch} placeholder="Search List..." margin="1.3"/>
           <EntryCards>
             {list.entries ? list.entries.map(entry => (
@@ -150,7 +172,6 @@ const DiscoverListPage = ({
                   </CardWrapper>
               )): null}
           </EntryCards>
-          <AddButtonWrapper><AddButton route="/entry-form/"/></AddButtonWrapper>
         </ContentContainer>
       </PageWrapper>
   );
