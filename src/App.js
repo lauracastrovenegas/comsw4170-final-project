@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components'
 import { ThemeProvider } from 'styled-components';
 import { useState, useEffect } from 'react';
 import theme from "./theme";
@@ -21,6 +22,11 @@ const App = () => {
   const [listImage, setListImage] = useState("")
   const [previousPage, setPreviousPage] = useState("")
   const [showNav, setShowNav] = useState(true)
+  const [currentPage, setCurrentPage] = useState("Discover")
+
+  const setPage = (input) => {
+    setCurrentPage(input);
+  }
 
   return (
     <ThemeProvider theme={theme}>
@@ -39,8 +45,8 @@ const App = () => {
             <Route path='/entry-form/1' element={<EntryFormPage2 listTitle={previousPage} imageLink={listImage}/>} />
             <Route path='/entry-form/2' element={<EntryFormPage3 imageLink={listImage}/>} />
         </Routes>
+        {showNav ? <NavBar currPage={currentPage} setCurrPage={setPage}/> : null}
       </Router>
-      {showNav ? <NavBar/> : null}
     </ThemeProvider>
   );
 }

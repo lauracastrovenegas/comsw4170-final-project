@@ -1,11 +1,17 @@
 import React from "react";
 import styled from "styled-components";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faListUl } from '@fortawesome/free-solid-svg-icons'
+import { faListAlt as faListAltFilled } from '@fortawesome/free-solid-svg-icons'
+import { faListAlt } from '@fortawesome/free-regular-svg-icons'
 import { faCompass } from '@fortawesome/free-regular-svg-icons'
+import { faCompass as faCompassFilled } from '@fortawesome/free-solid-svg-icons'
 import { faHome } from "@fortawesome/free-solid-svg-icons";
+import {ReactComponent as HomeFilled} from '../assets/home.svg';
+import {ReactComponent as HomeOutline} from '../assets/home_outline.svg';
+import { Link } from "react-router-dom";
+import { NavLink } from 'react-router-dom';
 
-const NavWrapper = styled.div`
+const NavWrapper = styled.nav`
     display: flex;
     position: fixed;
     bottom: 0;
@@ -15,11 +21,10 @@ const NavWrapper = styled.div`
     height: 4.5rem;
 `;
 
-const MenuItem = styled.a`
+const MenuItem = styled.div`
     flex: 1;
     padding: 0.5rem;
     text-decoration: none;
-    color: ${(props) => props.theme.colors.black};
 `;
 
 const Icon = styled.div`
@@ -27,29 +32,30 @@ const Icon = styled.div`
     margin: 0.7rem auto;
     svg{
         font-size: 2rem;
+        color: ${(props) => props.theme.colors.gray};
     } 
 `;
 
-const IconText = styled.div`
+const HomeIcon = styled.div`
     width: fit-content;
-    margin: 0rem auto;
+    margin: 0.35rem auto;
 `;
 
-export const NavBar = () => {
+export const NavBar = ({currPage, setCurrPage}) => {
 
     const tabs = [
         {
             route: "/home/",
-            icon: faHome,
+            icon: (currPage === "Home") ? <HomeFilled/> : <HomeOutline/>,
             label: "Home"
         },
         {
             route: "/",
-            icon: faCompass,
+            icon: (currPage === "Discover") ? faCompassFilled : faCompass,
             label: "Discover"
         },{
             route: "/my-lists/",
-            icon: faListUl,
+            icon: (currPage === "My Lists") ? faListAltFilled : faListAlt,
             label: "My Lists"
         }
     ]
@@ -57,9 +63,19 @@ export const NavBar = () => {
     return (
         <NavWrapper>
             {tabs.map(tab => (
-                <MenuItem href={tab.route}>
-                  <Icon><FontAwesomeIcon icon={tab.icon}/></Icon>
-                </MenuItem>
+                <>
+                {(tab.label === "Home") ? 
+                  <MenuItem onClick={() => setCurrPage("Home")}>
+                    <NavLink style={{ textDecoration: 'none' }} to={tab.route}>
+                        <HomeIcon>{tab.icon}</HomeIcon>
+                    </NavLink>
+                  </MenuItem>
+                : <MenuItem onClick={() => setCurrPage(tab.label)}>
+                    <NavLink style={{ textDecoration: 'none' }} to={tab.route}>
+                        <Icon><FontAwesomeIcon icon={tab.icon}/></Icon>
+                    </NavLink>
+                  </MenuItem>}
+                </>
             ))}
         </NavWrapper>
     );
