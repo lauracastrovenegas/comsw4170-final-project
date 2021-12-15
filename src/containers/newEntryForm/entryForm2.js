@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router';
 import { CategoryTag } from '../../components/catTag';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { BackButton } from '../../components/backBtn';
-import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faPlus, faShareAlt } from '@fortawesome/free-solid-svg-icons';
 import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 import { RateComponent } from '../../components/rateComponent';
 import { LinkPreview } from '../../components/linkPreview';
@@ -145,7 +145,7 @@ const EntryFormPage2 = ({
     <OptionsButton><FontAwesomeIcon icon={faEllipsisV}/></OptionsButton>
     <BottomCard>
       <Content>
-      <Title>Call Me By Your Name</Title>
+          <Title>Call Me By Your Name</Title>
           <Rate><RateComponent rate={4}/></Rate>
               <Section>
                 <SectionTitle>Photos</SectionTitle>
