@@ -40,7 +40,7 @@ const ContentContainer = styled.div`
 const Content = styled.div`
   padding-top: 1.5rem;
   overflow: scroll;
-  max-height: 60vh;
+  max-height: 66vh;
 `;
 
 const BackButtonBox = styled.div`
@@ -88,16 +88,17 @@ const Photo = styled.div`
   }
 `;
 
-const Link = styled.div`
-  margin: 1.5rem 0rem;
-`;
-
-const NotesBox = styled.div`
-  margin: 0rem 0rem;
+const NotesBox = styled.textarea`
   background-color: ${(props) => props.theme.colors.lightGray};
   padding: 1.5rem;
   border-radius: 15px;
-  margin-bottom: 3rem;
+  margin-bottom: 1.5rem;
+  height: 6rem;
+  width: 85%;
+  border: 0px;
+  :focus {
+    outline: none;
+  }
 `;
 
 const Rate = styled.div`
