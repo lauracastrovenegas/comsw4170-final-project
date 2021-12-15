@@ -7,6 +7,7 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons'
 
 const IconWrapper = styled.div`
     a {
+        border-radius: 45px;
         text-decoration: none;
         color: ${(props) => props.theme.colors.fullWhite};
     }
