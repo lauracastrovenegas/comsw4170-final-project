@@ -12,6 +12,7 @@ import { AddButton } from '../components/addFloatButton';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBookmark, faEllipsisV, faShareAlt } from '@fortawesome/free-solid-svg-icons';
 import { faBookmark as notSaved} from '@fortawesome/free-regular-svg-icons';
+import { FilterPopUp } from '../components/filterPopup';
 
 const PageWrapper = styled.div`
   background-color: ${(props) => props.theme.colors.fullWhite};
@@ -28,6 +29,12 @@ const TopContainer = styled.div`
   background-size: cover;
   min-height: 35vh;
   margin-bottom: -2rem;
+
+  img {
+    height: 35vh;
+    width: 100vw;
+    object-fit: cover;
+  }
 `;
 
 const ContentContainer = styled.div`
@@ -119,9 +126,15 @@ const DiscoverListPage = ({
   const [searchBarText, setSearchBarText] = useState('');
   const [isSaved, setSaved] = useState(false);
   const [list, setList] = useState({});
+  const [imageURL, setImage] = useState({});
+  const [isOpen, setOpen] = useState(false);
+
+  const toggleFilters = () => {
+    setOpen(!isOpen)
+  }
 
   useEffect(() => {
-    setList(fetchList(catid, listid))
+    fetchList(catid, listid)
   }, []);
 
   const fetchList = (catid, listid) => {
@@ -129,9 +142,13 @@ const DiscoverListPage = ({
       return element.id === catid;
     })
     
-    return category.lists.find((element) => {
+    const list = category.lists.find((element) => {
       return element.id === listid;
     })
+
+    setList(list)
+    setImage(list.image_URL)
+    console.log(list.image_URL)
   };
 
   const updateSearch = async (input) => {
@@ -148,14 +165,16 @@ const DiscoverListPage = ({
           <BackButton text="Discover" route={`/`} textColor="white"/>
         </BackButtonBox>
         <OptionsButton><FontAwesomeIcon icon={faEllipsisV}/></OptionsButton>
-        <TopContainer imageurl={list.image_URL}/>
+        <TopContainer imageurl={imageURL}>
+          <img src={imageURL}/>
+        </TopContainer>
         <ContentContainer>
           <Header>
             <Title>{list.title}</Title>
             {isSaved ? <BookmarkIcon onClick={() => toggleSave()}><FontAwesomeIcon onClick={() => toggleSave()} icon={faBookmark}/></BookmarkIcon> : <BookmarkIcon onClick={() => toggleSave()}><FontAwesomeIcon icon={notSaved}/></BookmarkIcon>}
             <ShareIcon><FontAwesomeIcon icon={faShareAlt}/></ShareIcon>
           </Header>
-          <SearchFilterBox barText={searchBarText} setBarText={updateSearch} placeholder="Search List..." margin="1.3"/>
+          <SearchFilterBox toggleFilter={toggleFilters} barText={searchBarText} setBarText={updateSearch} placeholder="Search List..." margin="1.3"/>
           <EntryCards>
             {list.entries ? list.entries.map(entry => (
                   <CardWrapper key={list.id}>
@@ -173,6 +192,7 @@ const DiscoverListPage = ({
               )): null}
           </EntryCards>
         </ContentContainer>
+        <FilterPopUp showCategories={false} closePopup={toggleFilters} isOpen={isOpen} inList={true}/>
       </PageWrapper>
   );
 }

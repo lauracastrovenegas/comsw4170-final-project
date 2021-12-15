@@ -3,7 +3,7 @@ export const discover_lists = [
         id: "2",
         category: "Books",
         lists: [{
-            id: "2",
+            id: "1",
             creator: "Yu-Chen",
             title: "My Favorite Books",
             category: "Books",
@@ -19,7 +19,7 @@ export const discover_lists = [
                 },
                 {
                     id: "2",
-                    title: "Another Harry Potter",
+                    title: "The Hunger Games",
                     notes: "blah blah blah",
                     date_created: "December 3, 2021",
                     reaction: "happy"
@@ -51,7 +51,7 @@ export const discover_lists = [
             ]
         },
         {
-            id: "2",
+            id: "3",
             creator: "Yu-Chen",
             title: "I <3 Books",
             category: "Books",
@@ -148,7 +148,7 @@ export const discover_lists = [
                 ]
             },
             {
-            id: "3",
+            id: "4",
             creator: "Sagarika",
             title: "Best Asian Food",
             category: "Recipes",
@@ -197,7 +197,7 @@ export const discover_lists = [
         }]
     },
     {    
-        id: "2",
+        id: "6",
         category: "Recipes You Might Like",
         lists: [{
             id: "2",
@@ -224,7 +224,7 @@ export const discover_lists = [
             ]
         },
         {
-            id: "2",
+            id: "7",
             creator: "Yu-Chen",
             title: "Cheeses!!!",
             category: "Books",
@@ -248,7 +248,7 @@ export const discover_lists = [
             ]
         },
         {
-            id: "2",
+            id: "8",
             creator: "Yu-Chen",
             title: "Yummy Soups",
             category: "Books",
@@ -272,7 +272,7 @@ export const discover_lists = [
             ]
         },
         {
-            id: "2",
+            id: "9",
             creator: "Yu-Chen",
             title: "Wholesome",
             category: "Books",
