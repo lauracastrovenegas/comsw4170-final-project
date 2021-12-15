@@ -14,18 +14,14 @@ const CardWrapper = styled.a`
 
 const Card = styled.div`
     display: flex;
-    flex-direction: column;
     background-color: ${(props) => props.theme.colors.fullWhite};
     border-radius: 15px;
     box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.10);
     border: 0px;
     height: 6.5rem;
-
-    img {
-        border-radius: 15px;
-        object-fit: cover;
-        height:100%;
-    }
+    background-image: url("${(props) => props.image}");
+    background-size: cover;
+    background-position: center;
 `;
 
 const Name = styled.a`
@@ -39,18 +35,14 @@ const Name = styled.a`
 `;
 
 const IconWrapper = styled.div`
-    z-index: 1; 
-  position: relative; 
-  bottom: 2.5rem; 
-  margin: 0rem 0.5rem 0rem auto;
+  margin: auto 0.5rem 0.5rem auto;
   width: fit-content;
 `;
 
 export const ListCard = ({id, catid, category, title, date_created, isPinned, imageURL, isPublic, prevRoute}) => {
     return (
         <CardWrapper href={(prevRoute === 'Discover')? `/discover/${catid}/${id}`:`/list/${id}`}>
-            <Card>
-                <img src={imageURL}></img>
+            <Card image={imageURL}>
                 {isPublic ? <IconWrapper><PublicIcon/></IconWrapper> : null }
             </Card>
             <Name>{title}</Name>
